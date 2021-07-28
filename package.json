@@ -1,0 +1,19 @@
+{
+  "name": "matchapp-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idanlevi507/MatchApp-web.git"
+  },
+  "author": "idan levi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idanlevi507/MatchApp-web/issues"
+  },
+  "homepage": "https://github.com/idanlevi507/MatchApp-web#readme"
+}
