@@ -1,8 +1,8 @@
 {
-  "name": "server",
+  "name": "beckend",
   "version": "1.0.0",
   "engines": {
-    "node": "14.17.3"
+    "node": "14.x"
   },
   "description": "production ready server",
   "main": "server.js",
