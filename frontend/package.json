@@ -12,7 +12,6 @@
     "cors": "^2.8.5",
     "formik": "^2.2.8",
     "google-map-react": "^2.1.9",
-    "google-maps-react": "^2.0.6",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

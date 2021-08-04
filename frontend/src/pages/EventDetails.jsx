@@ -10,7 +10,7 @@ import {
 } from '../store/actions/eventActions';
 import { utilService } from '../services/utilService';
 
-import MapContainer from '../cmps/GoogleMap';
+// import MapContainer from '../cmps/GoogleMap';
 import { EventJoin } from '../cmps/EventJoin';
 import { EventPostList } from '../cmps/EventPostList';
 import { IconUsers } from '../cmps/icon-cmps/IconUsers';
@@ -178,7 +178,7 @@ class _EventDetails extends React.Component {
           </div>
           <h2>{event.location}</h2>
           <div className="map-container">
-            <MapContainer event={event} />
+            {/* <MapContainer event={event} /> */}
           </div>
         </div>
         {showMsg ? message : null}

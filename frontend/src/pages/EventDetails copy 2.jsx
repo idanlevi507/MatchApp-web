@@ -5,7 +5,7 @@ import pitch from '../assets/imgs/pitch.jpg';
 import { ParticipantList } from '../cmps/ParticipantList';
 import { PostList } from '../cmps/PostList';
 // import {MapContainer} from '../cmps/GoogleMap'
-import { MapContainer } from '../cmps/GoogleMap';
+// import { MapContainer } from '../cmps/GoogleMap';
 import { EventJoin } from '../cmps/EventJoin';
 import { EventPosts } from '../cmps/EventPosts';
 

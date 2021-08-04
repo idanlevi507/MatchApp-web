@@ -7,7 +7,7 @@ import {
 } from '../store/actions/eventActions';
 import pitch from '../assets/imgs/pitch.jpg';
 import { ParticipantList } from '../cmps/ParticipantList';
-import MapContainer from '../cmps/GoogleMap';
+// import MapContainer from '../cmps/GoogleMap';
 import { EventJoin } from '../cmps/EventJoin';
 import { EventPostList } from '../cmps/EventPostList';
 
@@ -117,7 +117,7 @@ class _EventDetailsOld extends Component {
               <h3>Location :</h3>
               {event.location}
               <div className="details-maps-container">
-                <MapContainer event={event} />
+                {/* <MapContainer event={event} /> */}
               </div>
             </div>
             <div>
