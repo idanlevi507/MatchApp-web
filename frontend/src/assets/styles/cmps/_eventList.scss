@@ -112,6 +112,22 @@
 }
 
 @media screen and (max-width: 780px) {
+
+  .upcoming-container {
+    & .InfiniteCarousel {
+      width: 129% !important;
+      margin: 0 0 0 -35px !important;
+    }
+    & .InfiniteCarouselArrowNext {
+      right: -27px;
+    }
+    & .InfiniteCarouselArrowPrev {
+      left: -28px;
+  }
+}
+
+.InfiniteCarouselArrowNext
+
   .list-preview-container {
     font-size: 0.8rem;
     width: 76%;

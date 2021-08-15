@@ -176,10 +176,10 @@ class _EventDetails extends React.Component {
               loggedInUser={loggedInUser}
             />
           </div>
-          <h2>{event.location}</h2>
+          {/* <h2>{event.location}</h2>
           <div className="map-container">
-            {/* <MapContainer event={event} /> */}
-          </div>
+            <MapContainer event={event} />
+          </div> */}
         </div>
         {showMsg ? message : null}
       </main>

@@ -357,7 +357,7 @@
   .details-main-container {
     width: 100%;
     margin-top: 25px;
-    height: 249vh;
+    height: 176vh;
     h1,
     h2,
     h3,
@@ -375,7 +375,7 @@
     .details-container
     .details-call-to-action
     .details-info {
-    width: 70%;
+    width: 96vh;
     margin: 11px;
   }
   .details-main-container
@@ -425,32 +425,35 @@
     .details-info
     .posts-main-container {
     max-height: 215px;
-    width: 141%;
+    width: 100%;
   }
+
   .details-main-container
     .details-container
     .details-call-to-action
-    .call-to-action-container
-    .call-to-action {
-    position: absolute;
-    top: 223vh;
-    right: 0vh;
-    display: flex;
-    width: 100%;
-    height: 36%;
-    margin: 0px;
-    z-index: 10;
-    padding: 10px;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 0px;
-    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
-
-    .details-main-container .details-container {
-      height: 200vh;
-    }
-
+    .call-to-action-container{
+      width: 0%;
+      & .call-to-action {
+        position: absolute;
+        top: 151vh;
+        right: 0vh;
+        display: flex;
+        width: 100%;
+        height: 36%;
+        margin: 0px;
+        z-index: 10;
+        padding: 10px;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 0px;
+        box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+        
+      }
+        .details-main-container .details-container {
+          height: 200vh;
+        }
+        
     .details-main-container
       .details-container
       .details-call-to-action
