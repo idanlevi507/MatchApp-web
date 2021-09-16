@@ -10,12 +10,10 @@ class _MyEvents extends React.Component {
     await this.props.loadEvents();
   }
   onRemoveEvent = (eventId) => {
-    console.log('hello');
     this.props.removeEvent(eventId);
   };
 
   render() {
-    console.log('saba');
     const { loggedInUser } = this.props;
     // console.log(this.state.eventsToShow);
     if (!this.props.userEvents) return <h1>Loading...</h1>;
@@ -35,14 +33,13 @@ class _MyEvents extends React.Component {
                   alt=""
                 ></img>
                 <div className="user-details-container">
-                  <h2>Events Created :10</h2>
-                  <h2>Events Subscribed : 22</h2>
-                  <h2>followers : 45</h2>
-                  <h2>Reviews : 11</h2>
+                  <h2>Events Created :{this.props.userEvents.length}</h2>
+                  <h2>Events Attending :{this.props.userEvents.length}</h2>
+                  <h2>followers : 0</h2>
+                  <h2>Reviews : 0</h2>
                 </div>
                 <div className="profile-rating">
-                  <div>Rating : 4.0</div>
-                  <div>⭐⭐⭐⭐</div>
+                  <div>⭐⭐⭐⭐⭐</div>
                 </div>
               </div>
             </div>
@@ -80,6 +77,7 @@ class _MyEvents extends React.Component {
 function mapStateToProps(state) {
   const events = state.eventModule.events;
   const userId = state.userModule.loggedInUser._id;
+  console.log(events);
   const userEvents = events.filter((event) => event.createdBy._id === userId);
   const attendingEvents = events.filter((event) => {
     if (event.createdBy._id === userId) return false; // its my event;

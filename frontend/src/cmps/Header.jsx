@@ -55,7 +55,7 @@ export const Header = (props) => {
           Explore
         </NavLink>
         <div className="user-navs">
-          <NavLink to="" onClick={onProfileClicked}>
+          <NavLink to="#" onClick={onProfileClicked}>
             <div className="profile-menu">
               <img src={loggedInUser.imgUrl} alt="" />{' '}
               <div

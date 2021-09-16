@@ -141,11 +141,12 @@ class _LoginSignup extends Component {
           L<span className="blue-point">o</span>gin
           <span className="blue-point">.</span>
         </h2>
+        <h6>Choose User</h6> 
         <Select
           name="username"
           value={this.state.loginCred.username}
           onChange={this.loginHandleChange}
-        >
+        >select user
           <option value="">Select User</option>
           {this.props.users &&
             this.props.users.map((user) => (
@@ -173,7 +174,7 @@ class _LoginSignup extends Component {
         <br /> */}
         <button className="login-btn">Login</button>
         <button className="new-user" onClick={this.setNewUser}>
-          New User?
+          Sign Up
         </button>
       </form>
     );
@@ -208,9 +209,9 @@ class _LoginSignup extends Component {
           )}
         </div>
 
-        <section className="admin">
+        {/* <section className="admin">
           <hr className="login-signup-hr" />
-          <details>
+          <div>
             <div className="admin-container">
               <summary>Admin</summary>
             </div>
@@ -232,8 +233,8 @@ class _LoginSignup extends Component {
                 ))}
               </ul>
             )}
-          </details>
-        </section>
+          </div>
+        </section> */}
       </div>
     );
   }

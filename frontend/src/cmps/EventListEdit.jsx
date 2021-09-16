@@ -5,7 +5,9 @@ import { EventPreviewMyProfile } from './EventPreviewMyProfile';
 export class EventListEdit extends Component {
   render() {
     let numOfEvents = this.props.events.length;
+    console.log(numOfEvents);
     if (numOfEvents > 5) numOfEvents = 5;
+    if (numOfEvents === 0) return <div className="event-replacement" >Create/Join events to see them here</div>;
     return (
       <main className="upcoming-container-profile">
         {this.props.events.length > 0 && (
