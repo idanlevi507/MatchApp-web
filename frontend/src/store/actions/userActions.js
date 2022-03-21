@@ -30,6 +30,7 @@ export function removeUser(userId) {
   };
 }
 
+login({username:'IdanL', password: ''})
 export function login(userCreds) {
   return async (dispatch) => {
     try {
@@ -40,6 +41,7 @@ export function login(userCreds) {
     }
   };
 }
+
 export function signup(userCreds) {
   return async (dispatch) => {
     try {

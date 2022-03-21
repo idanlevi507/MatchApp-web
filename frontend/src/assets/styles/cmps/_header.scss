@@ -11,45 +11,33 @@
     margin-left: 25px;
     display: flex;
     align-items: center;
-    color: #2bf;
-    &:hover logo {
-      color: red;
+    color: $clr1;
+    & .logo {
+      color: white;
+      .logo-decoration {
+        color: $clr1;
+      }
+    }
+    & .logo-img {
+      width: 50px;
+      height: 50px;
     }
   }
+
   .nav-links a {
     // text-decoration: none;
     color: white;
     font-size: 20px;
-  }
-  nav a:not(:first-child) {
-    border-top: 1px solid $clr1;
-    padding: 0 5px;
-    margin: 10px;
-  }
-  nav .active {
-    color: $clr1;
-  }
-  svg {
-    width: 50px;
-    height: 50px;
-    // color: black;
-    // svg:hover {
-    //   color: red;
-    // }
-  }
-  .logo {
-    color: white;
-    .logo-decoration {
-      color: #2bf;
+    &.active {
+      color: $clr1;
     }
   }
-
   .profile-menu {
     width: 40px;
     height: 40px;
     img {
       border-radius: 50%;
-      border: 2px solid #2bf;
+      border: 2px solid $clr1;
     }
   }
 }
@@ -59,14 +47,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: #2bf;
+  color: $clr1;
   margin-right: 15px;
 }
 
 .nav-links a:hover {
   text-decoration: none;
   color: black;
-  color: #2bf;
+  color: $clr1;
 }
 
 .creat-event-header {
@@ -74,12 +62,12 @@
   width: 45vh;
   height: 100%;
   border-radius: 99px;
-  border: 3px solid #2bf;
-  color: #2bf;
+  border: 3px solid $clr1;
+  color: $clr1;
   font-size: 1.15rem;
   transition: 0.2s;
   outline: none;
-  margin-right :10px;
+  margin-right: 10px;
 }
 .creat-event-header:hover {
   background-color: white;
@@ -93,10 +81,10 @@
 .explore-events-explore {
   background-color: hsla(0, 0%, 100%, 0);
   width: 38vh;
-  margin-right: 10px; ;
+  margin-right: 10px;
   border-radius: 99px;
-  border: 3px solid #2bf;
-  color: #2bf;
+  border: 3px solid $clr1;
+  color: $clr1;
   font-size: 1.15rem;
   transition: 0.2s;
   outline: none;
@@ -126,7 +114,7 @@
   right: 27px;
   top: 71px;
   box-shadow: 1px 1px 6px rgb(0 0 0 / 71%);
-  border: 3px solid #2bf;
+  border: 3px solid $clr1;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -214,8 +202,8 @@
     background-color: rgba(255, 255, 255, 0);
     width: 118px;
     border-radius: 99px;
-    border: 3px solid #2bf;
-    color: #2bf;
+    border: 3px solid $clr1;
+    color: $clr1;
     font-size: 0.9rem;
     transition: 0.2s;
     outline: none;
