@@ -30,12 +30,12 @@ export function removeUser(userId) {
   };
 }
 
-login({username:'IdanL', password: ''})
 export function login(userCreds) {
   return async (dispatch) => {
     try {
       const user = await userService.login(userCreds);
       dispatch({ type: 'SET_USER', user });
+      console.log("im heree1");
     } catch (err) {
       console.log('UserActions: err in login', err);
     }

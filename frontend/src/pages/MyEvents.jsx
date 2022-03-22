@@ -33,13 +33,13 @@ class _MyEvents extends React.Component {
                   alt=""
                 ></img>
                 <div className="user-details-container">
-                  <h2>Events Created :{this.props.userEvents.length}</h2>
-                  <h2>Events Attending :{this.props.userEvents.length}</h2>
+                  <h2>Events Created : {this.props.userEvents.length}</h2>
+                  <h2>Events Attending : {this.props.attendingsEvents.length}</h2>
                   <h2>followers : 0</h2>
                   <h2>Reviews : 0</h2>
                 </div>
                 <div className="profile-rating">
-                  <div>⭐⭐⭐⭐⭐</div>
+                  <div>Rating: ⭐⭐⭐⭐⭐</div>
                 </div>
               </div>
             </div>
@@ -77,16 +77,17 @@ class _MyEvents extends React.Component {
 function mapStateToProps(state) {
   const events = state.eventModule.events;
   const userId = state.userModule.loggedInUser._id;
-  console.log(events);
   const userEvents = events.filter((event) => event.createdBy._id === userId);
-  const attendingEvents = events.filter((event) => {
+  console.log(userEvents);
+  const attendingsEvents = events.filter((event) => {
     if (event.createdBy._id === userId) return false; // its my event;
     return event.members.find((member) => member._id === userId);
   });
 
+
   return {
     userEvents: userEvents,
-    attendingsEvents: attendingEvents,
+    attendingsEvents: attendingsEvents,
     loggedInUser: state.userModule.loggedInUser,
   };
 }

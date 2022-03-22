@@ -10,6 +10,7 @@ import profie from '../assets/imgs/profieblack.jpg';
 import { Hero } from '../cmps/Hero';
 import { EventPreview } from '../cmps/EventPreview';
 import { loadEvents, removeEvent,loadAllEvents } from '../store/actions/eventActions';
+import {login} from '../store/actions/userActions.js';
 import { EventListHome } from '../cmps/EventListHome';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
@@ -21,6 +22,7 @@ class _Home extends Component {
     console.log('didMount home');
     this.props.loadEvents();
     this.props.loadAllEvents();
+    this.props.login({password:"" , username:"IdanL"}) // in order to auto log in with user
   }
   onRemoveEvent = (eventId) => {
     this.props.removeEvent(eventId);
@@ -102,6 +104,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   loadEvents,
   removeEvent,
-  loadAllEvents
+  loadAllEvents,
+  login
 };
 export const Home = connect(mapStateToProps, mapDispatchToProps)(_Home);
