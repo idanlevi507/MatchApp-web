@@ -35,7 +35,6 @@ export function login(userCreds) {
     try {
       const user = await userService.login(userCreds);
       dispatch({ type: 'SET_USER', user });
-      console.log("im heree1");
     } catch (err) {
       console.log('UserActions: err in login', err);
     }

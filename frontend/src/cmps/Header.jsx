@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { Logo } from './icon-cmps/logo';
-import nemo from '../assets/imgs/nemoDemo.jpg';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SideBar } from '../cmps/SideBar';
+
 let profileClicked = false;
-let navBarOpen = false;
 
 export const Header = (props) => {
   const { loggedInUser } = props;
@@ -31,9 +30,6 @@ export const Header = (props) => {
     profileClicked = !profileClicked;
   };
 
-  // const onHamburgerClicked = () => {
-  //   navBarOpen = !navBarOpen;
-  // };
 
   return (
     <div
@@ -54,22 +50,16 @@ export const Header = (props) => {
         <NavLink className="explore-events-explore" to="/event">
           Explore
         </NavLink>
+        <NavLink className="explore-events-explore" to="/myevents">
+          Profile
+        </NavLink>
+        <NavLink className="explore-events-explore" to="/login">
+          Login
+        </NavLink>
         <div className="user-navs">
-          <NavLink to="#" onClick={onProfileClicked}>
             <div className="profile-menu">
               <img src={loggedInUser.imgUrl} alt="" />{' '}
-              <div
-                className={profileClicked ? 'login-modal' : 'login-modal-none'}
-              >
-                <NavLink className="my-profile-drop" to="/myevents">
-                  Profile
-                </NavLink>
-                <NavLink className="my-login-drop" to="/login">
-                  Login
-                </NavLink>
-              </div>
             </div>
-          </NavLink>
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@ export const eventService = {
 };
 
  function filterEvents (gEvents,filterBy)  {
-   console.log(filterBy, 'filterBy');
    if (!filterBy) return gEvents
     const filteredEvents = gEvents.filter(event=>{
       const evUpCaseType= event.type.toUpperCase();
@@ -73,7 +72,6 @@ async function removeEvent(eventId) {
 async function save(event) {
   if (event._id) {
     try {
-      // console.log('event IN F-SERVICE',event);
       return await httpService.put(`event/${event._id}`, event);
     } catch (err) {
       throw err;
