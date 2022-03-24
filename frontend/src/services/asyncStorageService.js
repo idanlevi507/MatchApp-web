@@ -11,7 +11,6 @@ export const storageService = {
 };
 loadData();
 function loadData() {
-  console.log('1');
   var eventsDB = JSON.parse(localStorage.getItem('event')) || [];
   var usersDB = JSON.parse(localStorage.getItem('user')) || [];
   var eventLocations = events.eventi.map((event) => {

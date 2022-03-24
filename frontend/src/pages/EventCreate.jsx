@@ -58,7 +58,7 @@ class _EventCreate extends React.Component {
           },
         },
         () => {
-          console.log("loggedInUser", this.state);
+          // console.log("loggedInUser", this.state);
         }
       );
     }

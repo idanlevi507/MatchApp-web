@@ -61,6 +61,6 @@ const logger = require('./services/logger.service');
 const port = process.env.PORT || 3030;
 http.listen(port, () => {
   logger.info('Server is running on port: ' + port);
+  console.log('I am alive!, am I?');
 });
 
-console.log('I am Here!, am I?');

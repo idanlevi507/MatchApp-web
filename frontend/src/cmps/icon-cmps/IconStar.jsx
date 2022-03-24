@@ -5,7 +5,7 @@ export function IconStar() {
       focusable="false"
       data-prefix="fas"
       data-icon="star"
-      class="svg-inline--fa fa-star fa-w-18"
+      className="svg-inline--fa fa-star fa-w-18"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"

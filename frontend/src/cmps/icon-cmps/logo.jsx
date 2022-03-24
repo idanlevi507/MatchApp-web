@@ -5,7 +5,7 @@ export function Logo() {
       focusable="false"
       data-prefix="fas"
       data-icon="badge"
-      className="svg-inline--fa fa-badge fa-w-14"
+      className="logo-img svg-inline--fa fa-badge fa-w-14"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="370 145 350 350"
