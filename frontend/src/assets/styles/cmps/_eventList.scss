@@ -13,7 +13,10 @@
 }
 
 .list-filter-container {
-  margin: 35px;
+  display: flex;
+  margin-bottom: 35px;
+  justify-content: center;
+  align-items: center;
 }
 
 .list-preview-container {
@@ -25,69 +28,6 @@
   width: 70%;
   margin: 0 auto;
   justify-content: center;
-}
-
-.upcoming-container {
-  .InfiniteCarousel {
-    height: 100%;
-  }
-}
-
-.upcoming-container {
-  .InfiniteCarousel {
-    width: 90% !important;
-    margin: 0 auto !important;
-  }
-  .InfiniteCarouselFrame {
-    width: 100%;
-    margin: 0 auto;
-    margin-top: -30px;
-    height: 100%;
-  }
-  .InfiniteCarouselSlide {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    height: 525px !important;
-  }
-
-  .InfiniteCarouselArrowNext {
-    right: -30px;
-  }
-
-  .InfiniteCarouselArrowPrev {
-    left: -35px;
-  }
-
-  .InfiniteCarouselArrowIcon {
-    // border: solid $brandingBlue !important;
-    border-width: 0 5px 5px 0 !important;
-  }
-
-  .InfiniteCarouselDots {
-    // margin-top: 40px;
-    margin: 0;
-    position: relative;
-    > * {
-      outline: none;
-    }
-    // .InfiniteCarouselDotActiveIcon {
-    //   // background-color: $brandingBlue;
-    // }
-  }
-
-  @media screen and (max-width: 700) {
-    .InfiniteCarouselDot {
-      margin: 0 0 !important;
-    }
-    .InfiniteCarouselArrowNext {
-      right: -18px;
-    }
-
-    .InfiniteCarouselArrowPrev {
-      left: -18px;
-    }
-  }
 }
 
 .filter-container {
@@ -103,9 +43,21 @@
   width: 50%;
   border-radius: 15px;
   padding: 20px;
+  gap:5px;
   .type-filter-container {
     display: flex;
     flex-direction: column;
+    & .filter-button {
+      border-radius: 15px;
+      font-size: 20px;
+      height: 33px;
+      width: 180px;
+      text-align: center;
+      // border-color: #22bbff;
+      border-width: 1px;
+      font-family: serif;
+      // margin-left: 10px;
+    }
   }
 }
 .main-list-container {
@@ -113,7 +65,6 @@
 }
 
 @media screen and (max-width: 780px) {
-
   .upcoming-container {
     & .InfiniteCarousel {
       width: 129% !important;
@@ -124,10 +75,10 @@
     }
     & .InfiniteCarouselArrowPrev {
       left: -28px;
+    }
   }
-}
 
-.InfiniteCarouselArrowNext
+  .InfiniteCarouselArrowNext
 
   .list-preview-container {
     font-size: 0.8rem;
@@ -156,19 +107,6 @@
     border: 0px;
   }
 
-  .date-filter {
-    border-radius: 50px;
-    font-size: 20px;
-    height: 33px;
-    width: 175px;
-  }
-
-  .select-filter {
-    border-radius: 50px;
-    font-size: 20px;
-    width: 174px;
-    height: 33px;
-  }
 
   .events-main-container {
     // background-color: black;
