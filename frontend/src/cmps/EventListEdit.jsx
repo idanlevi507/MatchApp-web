@@ -5,8 +5,7 @@ import { EventPreviewMyProfile } from './EventPreviewMyProfile';
 export class EventListEdit extends Component {
   render() {
     let numOfEvents = this.props.events.length;
-    console.log(numOfEvents);
-    if (numOfEvents > 5) numOfEvents = 5;
+    if (numOfEvents > 4) numOfEvents = 4;
     if (numOfEvents === 0) return <div className="event-replacement" >Create/Join events to see them here</div>;
     return (
       <main className="upcoming-container-profile">
@@ -14,47 +13,33 @@ export class EventListEdit extends Component {
           <InfiniteCarousel
             breakpoints={[
               {
-                breakpoint: 700,
+                breakpoint: 550,
                 settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1,
                 },
               },
               {
-                breakpoint: 900,
+                breakpoint: 1100,
                 settings: {
                   slidesToShow: 2,
                   slidesToScroll: 1,
                 },
               },
               {
-                breakpoint: 1400,
+                breakpoint: 1450,
                 settings: {
                   slidesToShow: 3,
                   slidesToScroll: 1,
                 },
               },
-              {
-                breakpoint: 1600,
-                settings: {
-                  slidesToShow: 4,
-                  slidesToScroll: 1,
-                },
-              },
-              // {
-              //   breakpoint: 2200,
-              //   settings: {
-              //     slidesToShow: numOfEvents - 1 ? numOfEvents - 1 : 1,
-              //     slidesToScroll: 1,
-              //   },
-              // },
             ]}
             swipe={true}
             dots={false}
             showSides={false}
             sideSize={0.5}
             slidesToScroll={1}
-            slidesToShow={3}
+            slidesToShow={4}
             responsive={true}
             slidesSpacing={2}
           >
