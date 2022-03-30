@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SideBar } from '../cmps/SideBar';
 
-let profileClicked = false;
+// let profileClicked = false;
 
 export const Header = (props) => {
   const { loggedInUser } = props;
@@ -26,9 +26,9 @@ export const Header = (props) => {
     }
   };
 
-  const onProfileClicked = () => {
-    profileClicked = !profileClicked;
-  };
+  // const onProfileClicked = () => {
+  //   profileClicked = !profileClicked;
+  // };
 
 
   return (
@@ -44,14 +44,14 @@ export const Header = (props) => {
       </NavLink>
       <SideBar />
       <div className="nav-links">
+        <NavLink className="explore-events-explore" to="/event">
+          All Events
+        </NavLink>
         <NavLink className="creat-event-header" to="/create">
           Create Event
         </NavLink>
-        <NavLink className="explore-events-explore" to="/event">
-          Explore
-        </NavLink>
         <NavLink className="explore-events-explore" to="/myevents">
-          Profile
+          My Profile
         </NavLink>
         <NavLink className="explore-events-explore" to="/login">
           Login

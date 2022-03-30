@@ -1,11 +1,14 @@
 import React from 'react';
-import nemo from '../assets/imgs/nemoDemo.jpg';
+// import nemo from '../assets/imgs/nemoDemo.jpg';
 import { IconTrash } from './icon-cmps/IconTrash';
 import { IconEdit } from './icon-cmps/IconEdit';
 // import pitch from '../assets/imgs/pitch.jpg';
 // import bball from '../assets/imgs/bball.jpg';
 // import beach from '../assets/imgs/beach.jpg';
 // import running from '../assets/imgs/running.jpg';
+import { IconCalender } from './icon-cmps/IconCalender';
+import { LocationIcon } from './icon-cmps/Location';
+
 
 import { Link } from 'react-router-dom';
 
@@ -55,14 +58,11 @@ export class EventPreviewMyProfile extends React.Component {
           </div>
           <div className="preview-details">
             <h2 className="event-title-profile">{event.title}</h2>
-            <h4 className="preview-date-time">{`${event.eventDate} - ${event.eventTime}`}</h4>
-            <p>{event.location}</p>
+            <h4 className="preview-date-time"><IconCalender />  {`${event.eventDate} - ${event.eventTime}`}</h4>
+            <p><LocationIcon />  {event.location}</p>
           </div>
           <div className="counter">
             <p>{`${event.members.length}/${event.capacity} JOINED`}</p>
-            <div className="preview-type-rate">
-              {/* <h5>{event.typeIcon}</h5> */}
-            </div>
           </div>
         </Link>
         {this.state.isEditable ? eventActions : null}

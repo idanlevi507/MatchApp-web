@@ -28,7 +28,7 @@ class _EventFilter extends Component {
   };
 
   componentDidMount() {
-    this.props.loadLocations();
+    console.log(this.props)
   }
 
   handleChange = (ev) => {
@@ -47,13 +47,12 @@ class _EventFilter extends Component {
 
   render() {
     const { events, locations } = this.props;
-    // console.log(events, locations);
     if (!events || !locations) return <h1>Loading</h1>;
     return (
       <section className="filter-container">
         <div className="type-filter-container">
           <label htmlFor="filter-type">By Sport:</label>
-          <select className="select-filter"
+          <select className="filter-button"
             // variant=""
             name="type"
             id="filter-type"
@@ -68,7 +67,7 @@ class _EventFilter extends Component {
         </div>
         <div className="type-filter-container">
           <label htmlFor="filter-location">Location:</label>
-          <select className="select-filter"
+          <select className="filter-button"
             // variant="standard"
             name="location"
             id="filter-location"
@@ -87,7 +86,7 @@ class _EventFilter extends Component {
         <div className="type-filter-container">
           <label htmlFor="filter-time">By Time:</label>
           
-          <input className="date-filter" variant="standard"
+          <input className="filter-button" variant="standard"
             type="time"
             name="time"
             id="filter-time"
@@ -96,7 +95,7 @@ class _EventFilter extends Component {
         </div>
         <div className="type-filter-container">
           <label htmlFor="filter-date">By Date:</label>
-          <input className="date-filter"
+          <input className="filter-button"
             variant="standard"
             type="date"
             name="date"
