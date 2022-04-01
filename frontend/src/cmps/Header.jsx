@@ -44,6 +44,9 @@ export const Header = (props) => {
       </NavLink>
       <SideBar />
       <div className="nav-links">
+        <NavLink className="explore-events-explore" to="/#">
+          Home
+        </NavLink>
         <NavLink className="explore-events-explore" to="/event">
           All Events
         </NavLink>
@@ -57,9 +60,9 @@ export const Header = (props) => {
           Login
         </NavLink>
         <div className="user-navs">
-            <div className="profile-menu">
-              <img src={loggedInUser.imgUrl} alt="" />{' '}
-            </div>
+          <div className="profile-menu">
+            <img src={loggedInUser.imgUrl} alt="" />{' '}
+          </div>
         </div>
       </div>
     </div>

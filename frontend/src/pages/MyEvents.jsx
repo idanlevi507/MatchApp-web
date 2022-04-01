@@ -35,7 +35,7 @@ class _MyEvents extends React.Component {
                 <div className="user-details-container">
                   <h2>Events Created : {this.props.userEvents.length}</h2>
                   <h2>Events Attending : {this.props.attendingsEvents.length}</h2>
-                  <h2>followers : 0</h2>
+                  <h2>Followers : 0</h2>
                   <h2>Reviews : 0</h2>
                 </div>
                 <div className="profile-rating">

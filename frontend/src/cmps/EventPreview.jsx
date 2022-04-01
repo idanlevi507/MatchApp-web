@@ -67,9 +67,9 @@ export class EventPreview extends React.Component {
             <p className="counter-color">{`${event.members.length}/${event.capacity} JOINED`}</p>
           </div>
           <div className="preview-details">
-            <div className="preview-type-rate">
+            {/* <div className="preview-type-rate">
             <h5>{event.typeIcon}</h5>
-            </div>
+            </div> */}
             <h2>{event.title}</h2>
             {dateString}
             <h4 className="preview-normal-text"> <LocationIcon /> {event.location} </h4>

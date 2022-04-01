@@ -135,7 +135,7 @@
       margin: 0;
     }
   }
-  .preview-details {
+  & .preview-details {
     display: flex;
     flex-direction: column;
     // justify-content: space-between;
@@ -160,6 +160,7 @@
     }
     .preview-date-time {
       text-align: left;
+      font-weight: 400;
     }
   }
 }

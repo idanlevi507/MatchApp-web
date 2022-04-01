@@ -167,7 +167,6 @@ class _EventCreate extends React.Component {
               <label htmlFor="event-desc">Description:</label>
               <textarea
                 name="desc"
-                placeholder="Type Here Your Event Description!"
                 id="event-desc"
                 cols="50"
                 rows="17"

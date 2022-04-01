@@ -39,9 +39,10 @@ export class Hero extends React.Component {
           <Swiper
             slidesPerView={1}
             spaceBetween={0}
+            speed={2500}
             loop={true}
             autoplay={{
-              delay: 5000,
+              delay: 2500,
             }}
             pagination={{
               clickable: true,
