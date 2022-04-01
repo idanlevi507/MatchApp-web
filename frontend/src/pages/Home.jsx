@@ -47,28 +47,28 @@ class _Home extends Component {
         </div>
         <section className="categories-gallery ">
           <div className="gallery-item football-gallery" 
-          onClick={()=>this.props.history.push('/event')} >
+          onClick={()=>this.props.history.push('/event?type=Football')} >
             <h2>Football</h2>
             <h3 className="see-more">See more!</h3>
             <div className="overlay"></div>
             <img src={football} alt="bemo" />
           </div>
           <div className="gallery-item basketball-gallery"
-          onClick={()=>this.props.history.push('/event')}>
+          onClick={()=>this.props.history.push('/event?type=Basketball')}>
             <h2>Basketball</h2>
             <h3 className="see-more">See more!</h3>
             <div className="overlay"></div>
             <img src={basketball} alt="" />
           </div>
           <div className="gallery-item volleyball-gallery"
-          onClick={()=>this.props.history.push('/event')}>
+          onClick={()=>this.props.history.push('/event?type=Volleyball')}>
             <h2 className="gallery-h2">Volleyball</h2>
             <h3 className="see-more">See more!</h3>
             <div className="overlay"></div>
             <img src={volleyball} alt="bemo" />
           </div>
           <div className="gallery-item running-gallery"
-          onClick={()=>this.props.history.push('/event')}>
+          onClick={()=>this.props.history.push('/event?type=Running')}>
             <h2>Running</h2>
             <h3 className="see-more">See more!</h3>
             <div className="overlay"></div>
