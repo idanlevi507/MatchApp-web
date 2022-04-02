@@ -27,6 +27,7 @@ class _LoginSignup extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0)
     this.props.loadUsers();
   }
 

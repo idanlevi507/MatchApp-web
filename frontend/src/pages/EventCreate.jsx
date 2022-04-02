@@ -38,6 +38,7 @@ class _EventCreate extends React.Component {
   };
 
   async componentDidMount() {
+    window.scrollTo(0, 0)
     const editEventId = this.props.match.params.eventId;
 
     if (editEventId) {
