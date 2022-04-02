@@ -4,17 +4,20 @@ import { loadEvents } from '../store/actions/eventActions';
 import { setFilter } from '../store/actions/eventActions';
 import React from 'react';
 import { removeEvent } from '../store/actions/eventActions';
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 class _EventApp extends React.Component {
 
   async componentDidMount() {
+    window.scrollTo(0, 0)
     const query = new URLSearchParams(this.props.location.search);
-    const type = query.get('type')
-    const newFilter = { ...this.props.filterBy, type }
+    const type = (query.get('type'))? query.get('type') : 'all' 
+    // if (!type) type="all";
+    const newFilter = { ...this.props.filterBy, type };
     await this.props.setFilter(newFilter)
     this.props.loadEvents(this.props.filterBy);
   }
+
   onRemoveEvent = (eventId) => {
     this.props.removeEvent(eventId);
   };
@@ -29,14 +32,11 @@ class _EventApp extends React.Component {
     this.props.setFilter(emptyFilter);
   }
 
-  async componentWillUnmount() {
-    await this.cleanFilter()
-    console.log('unmount')
+  componentWillUnmount() {
+    this.cleanFilter()
   }
 
-  render() {
-    console.log(this.props.gEvents);
-    // if (this.props.gEvents.length === 0) return <h1>Loading...</h1>;
+  render() {   
     return (
       <section className="events-main-container">
         <EventList

@@ -6,7 +6,6 @@ export function loadEvents(filterBy = null) {
   return async (dispatch) => {
     try {
       const events = await eventService.query(filterBy);
-
       dispatch({ type: 'SET_EVENTS', events });
     } catch (err) {
       console.log('EventActions: err in loadEvents', err);

@@ -1,22 +1,21 @@
 import { connect } from 'react-redux';
-import React from 'react';
-import nemo from '../assets/imgs/nemoDemo.jpg';
+import React, { useEffect } from 'react';
 import { EventListEdit } from '../cmps/EventListEdit';
-import { EventPostList } from '../cmps/EventPostList';
 import { loadEvents, removeEvent } from '../store/actions/eventActions';
 
-class _MyEvents extends React.Component {
-  async componentDidMount() {
-    await this.props.loadEvents();
-  }
-  onRemoveEvent = (eventId) => {
-    this.props.removeEvent(eventId);
+const _MyEvents = (props) => {
+  const {loadEvents,removeEvent,loggedInUser,userEvents,attendingsEvents} = props
+ 
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+    loadEvents()   
+  },[])
+
+  const onRemoveEvent = (eventId) => {
+    removeEvent(eventId);
   };
 
-  render() {
-    const { loggedInUser } = this.props;
-    // console.log(this.state.eventsToShow);
-    if (!this.props.userEvents) return <h1>Loading...</h1>;
+    if (!userEvents) return <h1>Loading...</h1>;
     return (
       <main className="user-main-container">
         <div className="user-details-container">
@@ -33,8 +32,8 @@ class _MyEvents extends React.Component {
                   alt=""
                 ></img>
                 <div className="user-details-container">
-                  <h2>Events Created : {this.props.userEvents.length}</h2>
-                  <h2>Events Attending : {this.props.attendingsEvents.length}</h2>
+                  <h2>Events Created : {userEvents.length}</h2>
+                  <h2>Events Attending : {attendingsEvents.length}</h2>
                   <h2>Followers : 0</h2>
                   <h2>Reviews : 0</h2>
                 </div>
@@ -53,8 +52,8 @@ class _MyEvents extends React.Component {
                 </h4>
               </div>
               <EventListEdit
-                onRemoveEvent={this.onRemoveEvent}
-                events={this.props.userEvents}
+                onRemoveEvent={onRemoveEvent}
+                events={userEvents}
                 isEditable={true}
               />
             </div>
@@ -65,25 +64,22 @@ class _MyEvents extends React.Component {
               </h4>
             </div>
             <div className="user-events-list">
-              <EventListEdit events={this.props.attendingsEvents} />
+              <EventListEdit events={attendingsEvents} />
             </div>
           </div>
         </div>
       </main>
     );
-  }
 }
 
 function mapStateToProps(state) {
   const events = state.eventModule.events;
   const userId = state.userModule.loggedInUser._id;
   const userEvents = events.filter((event) => event.createdBy._id === userId);
-  console.log(userEvents);
   const attendingsEvents = events.filter((event) => {
     if (event.createdBy._id === userId) return false; // its my event;
     return event.members.find((member) => member._id === userId);
   });
-
 
   return {
     userEvents: userEvents,
@@ -94,7 +90,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   loadEvents,
-  removeEvent,
+  removeEvent
 };
 
 export const MyEvents = connect(mapStateToProps, mapDispatchToProps)(_MyEvents);

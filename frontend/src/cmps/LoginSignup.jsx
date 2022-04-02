@@ -90,7 +90,6 @@ class _LoginSignup extends Component {
     this.props.removeUser(userId);
   };
   render() {
-    console.log(this.props.loggedInUser);
     let signupSection = (
       <form className="frm" onSubmit={this.doSignup}>
         <h2>

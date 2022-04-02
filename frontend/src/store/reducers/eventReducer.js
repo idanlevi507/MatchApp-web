@@ -31,7 +31,6 @@ export function eventReducer(state = initialState, action = {}) {
         events: state.events.filter((event) => event._id !== action.eventId),
       };
     case 'SET_FILTER':
-      console.log(action.filterData);
       return { ...state, filterBy: action.filterData };
     case 'SET_LOCATIONS':
       return { ...state, locations: action.locations };
