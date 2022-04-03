@@ -170,7 +170,7 @@ class _EventCreate extends React.Component {
                 name="desc"
                 id="event-desc"
                 cols="50"
-                rows="17"
+                rows="20"
                 value={newEvent.desc}
                 onChange={this.handleChange}
               />
@@ -215,8 +215,6 @@ class _EventCreate extends React.Component {
                 value={newEvent.location}
                 onChange={this.handleChange}
               />
-              <div className="creat-btn-container">
-              <button className="submit-btn margin-top">Submit</button>
               <input
                 className="custom-file-input"
                 type="file"
@@ -226,8 +224,10 @@ class _EventCreate extends React.Component {
                 id="imgUpload"
                 multiple
               />
+            {/* <div className="creat-btn-container"> */}
+              <button className="submit-btn margin-top">Submit</button>
+            {/* </div> */}
             </div>
-              </div>
             {/* <div className="creat-submit-button">
           
         </div> */}

@@ -20,7 +20,7 @@ const _EventFilter = (props) => {
     } else {
       isMounted.current = true;
     }
-  }, [filterBy]);
+  }, [filterBy,dispatch]);
 
   const { events, locations } = props;
   if (!events || !locations) return <h1>Loading</h1>;
