@@ -1,52 +1,49 @@
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { EventList } from '../cmps/EventList';
 import { loadEvents } from '../store/actions/eventActions';
 import { setFilter } from '../store/actions/eventActions';
-import React from 'react';
-import { removeEvent } from '../store/actions/eventActions';
+import { EventPreview } from '../cmps/EventPreview'
+import { EventFilter } from '../cmps/EventFilter';
+// import { removeEvent } from '../store/actions/eventActions';
 // import { useLocation } from "react-router-dom";
 
-class _EventApp extends React.Component {
 
-  async componentDidMount() {
+const _EventApp=(props)=> {
+
+  useEffect(()=>{
     window.scrollTo(0, 0)
-    const query = new URLSearchParams(this.props.location.search);
-    const type = (query.get('type'))? query.get('type') : 'all' 
-    // if (!type) type="all";
-    const newFilter = { ...this.props.filterBy, type };
-    await this.props.setFilter(newFilter)
-    this.props.loadEvents(this.props.filterBy);
-  }
+    const query = new URLSearchParams(props.location.search);
+    const type = (query.get('type'))? query.get('type') : '' 
+    const newFilter = { ...props.filterBy, type };
+    props.setFilter(newFilter);
+    props.loadEvents(newFilter);
+  },[])
 
-  onRemoveEvent = (eventId) => {
-    this.props.removeEvent(eventId);
-  };
-
-  cleanFilter() {
-    const emptyFilter = {
-      type: "all",
-      location: "all",
-      date: "",
-      time: ""
-    }
-    this.props.setFilter(emptyFilter);
-  }
-
-  componentWillUnmount() {
-    this.cleanFilter()
-  }
-
-  render() {   
+  // const onRemoveEvent = (eventId) => {
+  //   props.removeEvent(eventId);
+  // };
+     
     return (
       <section className="events-main-container">
-        <EventList
-          gEvents={this.props.gEvents}
-          onRemoveEvent={this.onRemoveEvent}
-        />
+        <section className="list-main-containers">
+      <div className="list-filter-container">
+        <EventFilter events={props.gEvents} />
+      </div>
+      <div className="list-preview-container">
+        {props.gEvents.map((event) => {
+          return (
+            <EventPreview
+              key={event._id}
+              event={event}
+              //  onRemoveEvent={onRemoveEvent}
+            />
+          );
+        })}
+      </div>
+    </section>
       </section>
     );
   }
-}
 
 function mapStateToProps(state) {
 
@@ -60,7 +57,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   loadEvents,
-  removeEvent,
+  // removeEvent,
   setFilter
 };
 

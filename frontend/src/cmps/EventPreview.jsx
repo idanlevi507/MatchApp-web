@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react';
+//everyone events
+
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { IconTrash } from './icon-cmps/IconTrash';
-import { IconEdit } from './icon-cmps/IconEdit';
-import { FootballIcon } from './icon-cmps/footballIcon';
+// import { IconTrash } from './icon-cmps/IconTrash';
+// import { IconEdit } from './icon-cmps/IconEdit';
+// import { FootballIcon } from './icon-cmps/footballIcon';
 import { LocationIcon } from './icon-cmps/Location';
 import { IconCalender } from './icon-cmps/IconCalender';
 import { IconStar } from './icon-cmps/IconStar';
 import { utilService } from '../services/utilService';
 
-export const EventPreview = (props) => {
-  const [isEditable, setEditable] = useState(false)
+export const EventPreview = ({event}) => {
+  // const [isEditable, setEditable] = useState(false)
 
-  useEffect(() => {
-    if (props.isEditable) setEditable(true);
-    setTypeIcon();
-  }, [])
+  // useEffect(() => {
+  //   if (props.isEditable) setEditable(true);
+  //   setTypeIcon();
+  // }, [])
 
-  const setTypeIcon = () => {
-    const { type } = props.event;
-    if (type === 'Football') props.event.typeIcon = <FootballIcon />;
-    if (type === 'VolleyBall') props.event.typeIcon = '🏐';
-    if (type === 'Basketball') props.event.typeIcon = '🏀';
-    if (type === 'Running') props.event.typeIcon = '🏃🏼‍♂️';
-  };
-
-  const { event, onRemoveEvent } = props;
+  // const setTypeIcon = () => {
+  //   const { type } = props.event;
+  //   if (type === 'Football') props.event.typeIcon = <FootballIcon />;
+  //   if (type === 'VolleyBall') props.event.typeIcon = '🏐';
+  //   if (type === 'Basketball') props.event.typeIcon = '🏀';
+  //   if (type === 'Running') props.event.typeIcon = '🏃🏼‍♂️';
+  // };
+  
   let date = utilService.getTimeAndDate(event.eventDate);
   let dateString = (
     <h4 className="preview-date-time preview-normal-text"><IconCalender />
@@ -33,20 +34,20 @@ export const EventPreview = (props) => {
       {event.eventTime}
     </h4>
   );
-  let eventActions = (
-    <div className="event-actions">
-      <button
-        onClick={() => {
-          onRemoveEvent(event._id);
-        }}
-      >
-        <IconTrash />
-      </button>
-      <button>
-        <IconEdit />
-      </button>
-    </div>
-  );
+  // let eventActions = (
+  //   <div className="event-actions">
+  //     <button
+  //       onClick={() => {
+  //         onRemoveEvent(event._id);
+  //       }}
+  //     >
+  //       <IconTrash />
+  //     </button>
+  //     <button>
+  //       <IconEdit />
+  //     </button>
+  //   </div>
+  // );
   return (
     <div className="event-preview">
       <Link to={`/event/${event._id}`} className="preview-link">
@@ -81,7 +82,7 @@ export const EventPreview = (props) => {
           </div>
         </div>
       </Link>
-      {isEditable ? eventActions : null}
+      {/* {isEditable ? eventActions : null} */}
     </div>
   );
 }

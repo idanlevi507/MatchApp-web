@@ -73,7 +73,7 @@ const _MyEvents = (props) => {
 }
 
 function mapStateToProps(state) {
-  const events = state.eventModule.events;
+  const events = state.eventModule.allEvents;
   const userId = state.userModule.loggedInUser._id;
   const userEvents = events.filter((event) => event.createdBy._id === userId);
   const attendingsEvents = events.filter((event) => {
