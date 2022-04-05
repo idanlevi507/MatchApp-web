@@ -29,11 +29,11 @@
           font-weight: bolder;
           font-size: 24px;
         }
-        & img {
+        & .profile-user-img {
           width: 200px;
-          height: 200px;
+          height: 265px;
           object-fit: cover;
-          border-radius: 50%;
+          border-radius: 5%;
           border: 2px solid black;
         }
       }

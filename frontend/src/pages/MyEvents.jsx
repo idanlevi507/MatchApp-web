@@ -27,7 +27,7 @@ const _MyEvents = (props) => {
               </h1>
               <div className="profile-details">
                 <img
-                  className="profile-img"
+                  className="profile-user-img"
                   src={loggedInUser.imgUrl}
                   alt=""
                 ></img>
