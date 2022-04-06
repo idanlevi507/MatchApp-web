@@ -16,7 +16,7 @@ export function eventReducer(state = initialState, action = {}) {
     case 'SET_ALLEVENTS':
       return {...state, allEvents:action.allEvents}
     case 'SET_EVENTS':
-      return { ...state, events: action.events };
+      return { ...state, events: action.eventData.events,  filterBy: action.eventData.filterBy };
     case 'CLEAR_EVENT':
       return { ...state, event: null };
     case 'SET_EVENT':

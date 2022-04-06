@@ -3,9 +3,9 @@ import {connect, useDispatch} from 'react-redux';
 import { loadEvents, setFilter } from "../store/actions/eventActions";
 
 const _EventFilter = (props) => {
-  const [filterBy, setFilterBy] = useState({ type: "all", location: "all", date: "", time: "" })
   const dispatch  = useDispatch(); 
   const isMounted = useRef(false);
+  const [filterBy, setFilterBy] = useState({ type: props.type, location: "all", date: "", time: "" })
  
   const handleChange = (ev) => {
     const field = ev.target.name;
@@ -22,6 +22,35 @@ const _EventFilter = (props) => {
     }
   }, [filterBy,dispatch]);
 
+  useEffect(()=>{
+    // componentwillunmount
+    return cleanFilter;
+  },[])
+  
+  const cleanFilter = () => {
+    console.log("clearfilter");
+    const emptyFilter = {
+      type: "",
+      location: "",
+      date: "",
+      time: ""
+    }
+    setFilter(emptyFilter);
+  }
+
+  const options = [
+    {value: '', label: 'Show All'},
+    {value: 'Football', label: 'Football'},
+    {value: 'Basketball', label: 'Basketball'},
+    {value: 'Volleyball', label: 'Volleyball'},
+    {value: 'Running', label: 'Running'}
+  ]
+  .map(({value, label}) => {
+    const isSelected = value === filterBy.type;
+    const option = (<option selected={isSelected} value={value}>{label}</option>);
+    return option;
+  })
+
   const { events, locations } = props;
   if (!events || !locations) return <h1>Loading</h1>;
   return (
@@ -34,11 +63,7 @@ const _EventFilter = (props) => {
           id="filter-type"
           onChange={handleChange}
         >
-          <option value="all">Show All</option>
-          <option value="Football">Football</option>
-          <option value="Basketball">Basketball</option>
-          <option value="Volleyball">Volleyball</option>
-          <option value="Running">Running</option>
+          {options}
         </select>
       </div>
       <div className="type-filter-container">
@@ -49,7 +74,7 @@ const _EventFilter = (props) => {
           id="filter-location"
           onChange={handleChange}
         >
-          <option value="all">Show All</option>
+          <option value="">Show All</option>
           {locations.map((location, index) => {
             return (
               <option value={location} key={index}>
