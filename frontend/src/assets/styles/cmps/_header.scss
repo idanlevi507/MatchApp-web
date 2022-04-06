@@ -29,12 +29,13 @@
     color: white;
     font-size: 20px;
   }
-  .profile-menu {
+  & .profile-menu {
     width: 40px;
     height: 40px;
-    img {
+    & img {
       border-radius: 50%;
       border: 2px solid $clr1;
+      object-position: 100% 20%;
     }
   }
 }

@@ -4,7 +4,7 @@ import { EventApp } from './pages/EventApp';
 import { Component } from 'react';
 import { Header } from './cmps/Header';
 import { EventEdit } from './cmps/EventEdit';
-import { UserProfile } from './pages/UserProfile';
+// import { UserProfile } from './pages/UserProfile';
 import { About } from './pages/About';
 import { Home } from './pages/Home';
 import { LoginSignup } from './cmps/LoginSignup.jsx';
@@ -27,7 +27,7 @@ class _App extends Component {
           <main className="main-page">
             <Switch>
               <Route component={EventEdit} path="/edit/:event" />
-              <Route component={UserProfile} path="/profile/:userId" />
+              {/* <Route component={UserProfile} path="/profile/:userId" /> */}
               <Route component={EventDetails} path="/event/:eventId" />
               {/* <Route component={EventDetailsNew} path="/event" /> */}
               <Route component={MyEvents} path="/myevents" />

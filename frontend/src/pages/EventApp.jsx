@@ -1,57 +1,149 @@
-import { connect } from 'react-redux';
-import { EventList } from '../cmps/EventList';
-import { loadEvents } from '../store/actions/eventActions';
-import { setFilter } from '../store/actions/eventActions';
-import React from 'react';
-import { removeEvent } from '../store/actions/eventActions';
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { loadEvents, setFilter } from '../store/actions/eventActions';
+import { EventPreview } from '../cmps/EventPreview'
+// import { EventFilter } from '../cmps/EventFilter';
+// import { removeEvent } from '../store/actions/eventActions';
+// import { useLocation } from "react-router-dom";
 
-class _EventApp extends React.Component {
 
-  async componentDidMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const type = query.get('type')
-    const newFilter = { ...this.props.filterBy, type }
-    await this.props.setFilter(newFilter)
-    this.props.loadEvents(this.props.filterBy);
-  }
-  onRemoveEvent = (eventId) => {
-    this.props.removeEvent(eventId);
-  };
+const _EventApp = (props) => {
+  const query = new URLSearchParams(props.location.search);
+  const [type] = useState(query.get('type'));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const newFilter = { ...props.filterBy, type };
+    props.loadEvents(newFilter);
+  }, [])
 
-  cleanFilter() {
-    const emptyFilter = {
-      type: "all",
-      location: "all",
-      date: "",
-      time: ""
+
+  const EventFilter = (props) => {
+    // const dispatch = useDispatch();
+    const filterBy = props.filterBy;
+    // const isMounted = useRef(false);
+
+    const handleChange = (ev) => {
+      const field = ev.target.name;
+      const value = ev.target.value;
+      props.loadEvents({ ...filterBy, [field]: value });
+    };
+
+    // useEffect(()=>{
+    //   if (isMounted.current){
+    //     dispatch(setFilter(filterBy));
+    //     dispatch(loadEvents(filterBy));
+    //   } else {
+    //     isMounted.current = true;
+    //   }
+    // }, [filterBy,dispatch]);
+
+    useEffect(() => {
+      // componentwillunmount
+      return cleanFilter;
+    }, [])
+
+    const cleanFilter = () => {
+      const emptyFilter = {
+        type: "",
+        location: "",
+        date: "",
+        time: ""
+      }
+      setFilter(emptyFilter);
     }
-    this.props.setFilter(emptyFilter);
-  }
 
-  async componentWillUnmount() {
-    await this.cleanFilter()
-    console.log('unmount')
-  }
-
-  render() {
-    console.log(this.props.gEvents);
-    // if (this.props.gEvents.length === 0) return <h1>Loading...</h1>;
+    const options = [
+      { value: '', label: 'Show All' },
+      { value: 'Football', label: 'Football' },
+      { value: 'Basketball', label: 'Basketball' },
+      { value: 'Volleyball', label: 'Volleyball' },
+      { value: 'Running', label: 'Running' }
+    ]
+      .map(({ value, label }) => {
+        const option = (<option value={value}>{label}</option>);
+        return option;
+      })
+console.log(filterBy.type);
+    const { events } = props;
+    // console.log(events);
+    if (!events) return <h1>Loading</h1>;
     return (
-      <section className="events-main-container">
-        <EventList
-          gEvents={this.props.gEvents}
-          onRemoveEvent={this.onRemoveEvent}
-        />
+      <section className="filter-container">
+        <div className="type-filter-container">
+          <label htmlFor="filter-type">By Sport:</label>
+          <select className="filter-button"
+            // variant=""
+            value={filterBy.type}
+            name="type"
+            id="filter-type"
+            onChange={handleChange}
+          >
+            {options}
+          </select>
+        </div>
+        <div className="type-filter-container">
+          <label htmlFor="filter-location">Location:</label>
+          <select className="filter-button"
+            // variant="standard"
+            name="location"
+            id="filter-location"
+            onChange={handleChange}
+          >
+            <option value="">Show All</option>
+          </select>
+        </div>
+        <div className="type-filter-container">
+          <label htmlFor="filter-time">By Time:</label>
+
+          <input className="filter-button" variant="standard"
+            type="time"
+            name="time"
+            id="filter-time"
+            onChange={handleChange}>
+          </input>
+        </div>
+        <div className="type-filter-container">
+          <label htmlFor="filter-date">By Date:</label>
+          <input className="filter-button"
+            variant="standard"
+            type="date"
+            name="date"
+            id="filter-date"
+            onChange={handleChange}
+          />
+        </div>
       </section>
     );
   }
+
+
+  return (
+    <section className="events-main-container">
+      <section className="list-main-containers">
+        <div className="list-filter-container">
+          <EventFilter events={props.gEvents} filterBy={props.filterBy} loadEvents={props.loadEvents} />
+        </div>
+        <div className="list-preview-container">
+          {props.gEvents.map((event) => {
+            return (
+              <EventPreview
+                key={event._id}
+                event={event}
+              //  onRemoveEvent={onRemoveEvent}
+              />
+            );
+          })}
+        </div>
+      </section>
+    </section>
+  );
 }
 
 function mapStateToProps(state) {
 
   return {
-
+    locations: state.eventModule.locations,
     gEvents: state.eventModule.events,
     filterBy: state.eventModule.filterBy,
     loggedinUser: state.userModule.loggedinUser,
@@ -60,7 +152,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   loadEvents,
-  removeEvent,
+  // removeEvent,
   setFilter
 };
 

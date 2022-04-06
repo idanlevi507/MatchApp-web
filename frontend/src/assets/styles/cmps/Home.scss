@@ -173,7 +173,7 @@
       margin-bottom: 40px;
 
       transition: 0.5s;
-      transform: translate(-1%, 13%) scale(1);
+      // transform: translate(-1%, 13%) scale(1);
     }
     &:hover {
       img {
@@ -210,7 +210,7 @@
     img {
       transform: scalex(1.1) translate(23px, -2.1px) scale(1.1);
     }
-  }
+  } 
 }
 .running-gallery {
   grid-area: 2/4/3/7;
@@ -218,11 +218,11 @@
   img {
     width: 100%;
     transition: 0.5s;
-    transform: scalex(1.1) translate(12px, 25px) scale(1);
+    // transform: scalex(1.1) translate(12px, 25px) scale(1);
   }
   &:hover {
     img {
-      transform: scalex(1.1) translate(12px, 25px) scale(1.1);
+      transform: scalex(1.0) translate(12px, 12px) scale(1.1);
     }
   }
 }

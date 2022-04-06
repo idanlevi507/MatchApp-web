@@ -1,111 +1,111 @@
-import { Component } from "react";
-import { connect } from "react-redux";
-import {
-  Paper,
-  Button,
-  Input,
-  TextField,
-  Select,
-  Icons,
-  Switch,
-} from "@material-ui/core";
-import { ThreeDRotation } from "@material-ui/icons";
+import {useState, useEffect, useRef} from "react";
+import {connect, useDispatch} from 'react-redux';
+import { loadEvents, setFilter } from "../store/actions/eventActions";
 
-import {
-  loadEvents,
-  setFilter,
-  loadLocations,
-} from "../store/actions/eventActions";
-
-class _EventFilter extends Component {
-  state = {
-    filterBy: {
-      type: "all",
-      location: "all",
-      date: "",
-      time: ""
-    },
-  };
-
-  componentDidMount() {
-    console.log(this.props)
-  }
-
-  handleChange = (ev) => {
+const _EventFilter = (props) => {
+  const dispatch  = useDispatch(); 
+  const isMounted = useRef(false);
+  const [filterBy, setFilterBy] = useState({ type: props.type, location: "all", date: "", time: "" })
+ 
+  const handleChange = (ev) => {
     const field = ev.target.name;
     const value = ev.target.value;
-    this.setState(
-      { filterBy: { ...this.state.filterBy, [field]: value } },
-      () => {
-        this.props.setFilter(this.state.filterBy).then(() => {
-          // console.log(this.state.filterBy);
-          this.props.loadEvents(this.state.filterBy);
-        });
-      }
-    );
+    setFilterBy({ ...filterBy, [field]: value });
   };
 
-  render() {
-    const { events, locations } = this.props;
-    if (!events || !locations) return <h1>Loading</h1>;
-    return (
-      <section className="filter-container">
-        <div className="type-filter-container">
-          <label htmlFor="filter-type">By Sport:</label>
-          <select className="filter-button"
-            // variant=""
-            name="type"
-            id="filter-type"
-            onChange={this.handleChange}
-          >
-            <option value="all">Show All</option>
-            <option value="Football">Football</option>
-            <option value="Basketball">Basketball</option>
-            <option value="Volleyball">Volleyball</option>
-            <option value="Running">Running</option>
-          </select>
-        </div>
-        <div className="type-filter-container">
-          <label htmlFor="filter-location">Location:</label>
-          <select className="filter-button"
-            // variant="standard"
-            name="location"
-            id="filter-location"
-            onChange={this.handleChange}
-          >
-            <option value="all">Show All</option>
-            {locations.map((location, index) => {
-              return (
-                <option value={location} key={index}>
-                  {location}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="type-filter-container">
-          <label htmlFor="filter-time">By Time:</label>
-          
-          <input className="filter-button" variant="standard"
-            type="time"
-            name="time"
-            id="filter-time"
-            onChange={this.handleChange}>
-          </input>
-        </div>
-        <div className="type-filter-container">
-          <label htmlFor="filter-date">By Date:</label>
-          <input className="filter-button"
-            variant="standard"
-            type="date"
-            name="date"
-            id="filter-date"
-            onChange={this.handleChange}
-          />
-        </div>
-      </section>
-    );
+  useEffect(()=>{
+    if (isMounted.current){
+      dispatch(setFilter(filterBy));
+      dispatch(loadEvents(filterBy));
+    } else {
+      isMounted.current = true;
+    }
+  }, [filterBy,dispatch]);
+
+  useEffect(()=>{
+    // componentwillunmount
+    return cleanFilter;
+  },[])
+  
+  const cleanFilter = () => {
+    console.log("clearfilter");
+    const emptyFilter = {
+      type: "",
+      location: "",
+      date: "",
+      time: ""
+    }
+    setFilter(emptyFilter);
   }
+
+  const options = [
+    {value: '', label: 'Show All'},
+    {value: 'Football', label: 'Football'},
+    {value: 'Basketball', label: 'Basketball'},
+    {value: 'Volleyball', label: 'Volleyball'},
+    {value: 'Running', label: 'Running'}
+  ]
+  .map(({value, label}) => {
+    const isSelected = value === filterBy.type;
+    const option = (<option selected={isSelected} value={value}>{label}</option>);
+    return option;
+  })
+
+  const { events, locations } = props;
+  if (!events || !locations) return <h1>Loading</h1>;
+  return (
+    <section className="filter-container">
+      <div className="type-filter-container">
+        <label htmlFor="filter-type">By Sport:</label>
+        <select className="filter-button"
+          // variant=""
+          name="type"
+          id="filter-type"
+          onChange={handleChange}
+        >
+          {options}
+        </select>
+      </div>
+      <div className="type-filter-container">
+        <label htmlFor="filter-location">Location:</label>
+        <select className="filter-button"
+          // variant="standard"
+          name="location"
+          id="filter-location"
+          onChange={handleChange}
+        >
+          <option value="">Show All</option>
+          {locations.map((location, index) => {
+            return (
+              <option value={location} key={index}>
+                {location}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <div className="type-filter-container">
+        <label htmlFor="filter-time">By Time:</label>
+
+        <input className="filter-button" variant="standard"
+          type="time"
+          name="time"
+          id="filter-time"
+          onChange={handleChange}>
+        </input>
+      </div>
+      <div className="type-filter-container">
+        <label htmlFor="filter-date">By Date:</label>
+        <input className="filter-button"
+          variant="standard"
+          type="date"
+          name="date"
+          id="filter-date"
+          onChange={handleChange}
+        />
+      </div>
+    </section>
+  );
 }
 
 function mapStateToProps(state) {
@@ -116,8 +116,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   setFilter,
-  loadEvents,
-  loadLocations,
+  loadEvents
 };
 
 export const EventFilter = connect(

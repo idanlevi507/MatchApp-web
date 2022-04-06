@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -11,15 +11,14 @@ import {
 } from "react-share"
 
 
-export class SocialShare extends Component {
+export const SocialShare = () => {
+  const shareUrl = 'https://matchappca.herokuapp.com/#/event/'
+  const title = 'Check this amazing event '
+  return (
 
-  render() {
-    const shareUrl = 'https://matchappca.herokuapp.com/#/event/' 
-    const title = 'Check this amazing event ' 
-    return (
-      <div className="social-share flex column space-around align-items">
-        {/* <h3 className="align-self-center">Invite your friends</h3> */}
-        <div className="flex space-around align-items justify-center">
+    <div className="social-share flex column space-around align-items">
+      {/* <h3 className="align-self-center">Invite your friends</h3> */}
+      <div className="flex space-around align-items justify-center">
         <div className="share-icon">
           <TwitterShareButton
             url={shareUrl}
@@ -52,8 +51,7 @@ export class SocialShare extends Component {
             <FacebookIcon size={50} round />
           </FacebookShareButton>
         </div>
-        </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
