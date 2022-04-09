@@ -14,6 +14,7 @@ const _EventApp = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const newFilter = { ...props.filterBy, type };
+    console.log(type);
     props.loadEvents(newFilter);
   }, [])
 
@@ -61,15 +62,15 @@ const _EventApp = (props) => {
       { value: 'Running', label: 'Running' }
     ]
       .map(({ value, label }) => {
-        const option = (<option value={value}>{label}</option>);
+        const option = (<option value={value} key={label}>{label}</option>);
         return option;
       })
-console.log(filterBy.type);
+    // console.log(filterBy.type);
     const { events } = props;
     // console.log(events);
     if (!events) return <h1>Loading</h1>;
     return (
-      <section className="filter-container">
+      <section className="filter-container font-style2">
         <div className="type-filter-container">
           <label htmlFor="filter-type">By Sport:</label>
           <select className="filter-button"

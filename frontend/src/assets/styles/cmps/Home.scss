@@ -128,6 +128,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    // font-family: kalamfontregular;
     font-weight: bolder;
     overflow: hidden;
     border-radius: 8px;
@@ -368,8 +369,6 @@
 
 .featured-event-header {
   font-size: 44px;
-  // position: absolute;
-  // margin-left: 74px;
   margin-top: -31px;
   padding: 0px;
   z-index: 3;

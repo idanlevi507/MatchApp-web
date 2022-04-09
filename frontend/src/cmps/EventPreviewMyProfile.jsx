@@ -47,12 +47,12 @@ export const EventPreviewMyProfile = (props) => {
         <div className="event-preview-img">
           <img src={event.imgs[0]} alt="" className="preview-img" />
         </div>
-        <div className="preview-details">
+        <div className="preview-details font-style1">
           <h2 className="event-title-profile">{event.title}</h2>
           <h4 className="preview-date-time"><IconCalender />  {`${event.eventDate} - ${event.eventTime}`}</h4>
           <p><LocationIcon />  {event.location}</p>
         </div>
-        <div className="counter">
+        <div className="counter font-style1">
           <p>{`${event.members.length}/${event.capacity} JOINED`}</p>
         </div>
       </Link>
