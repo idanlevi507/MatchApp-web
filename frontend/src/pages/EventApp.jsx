@@ -70,7 +70,7 @@ const _EventApp = (props) => {
     // console.log(events);
     if (!events) return <h1>Loading</h1>;
     return (
-      <section className="filter-container font-style2">
+      <section className="filter-container ">
         <div className="type-filter-container">
           <label htmlFor="filter-type">By Sport:</label>
           <select className="filter-button"

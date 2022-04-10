@@ -49,7 +49,7 @@ export const EventPreview = ({event}) => {
   //   </div>
   // );
   return (
-    <div className="event-preview font-style1">
+    <div className="event-preview ">
       <Link to={`/event/${event._id}`} className="preview-link">
         <div className="event-preview-img">
           <img src={event.imgs[0]} alt="" className="preview-img" />

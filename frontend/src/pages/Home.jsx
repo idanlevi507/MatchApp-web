@@ -35,7 +35,7 @@ class _Home extends Component {
           <EventMenu />
         </div>
         <div className="main-list-container">
-          <h1 className="featured-event-header font-style2">
+          <h1 className="featured-event-header ">
             Main Events
           </h1>
           <section className="event-list-container">
@@ -45,7 +45,7 @@ class _Home extends Component {
             />
           </section>
         </div>
-        <section className="categories-gallery font-style2">
+        <section className="categories-gallery ">
           <div className="gallery-item football-gallery" 
           onClick={()=>this.props.history.push('/event?type=Football')} >
             <h2>Football</h2>
