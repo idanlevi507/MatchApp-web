@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import { EventListEdit } from '../cmps/EventListEdit';
-import { loadEvents, removeEvent } from '../store/actions/eventActions';
+import { loadAllEvents, removeEvent } from '../store/actions/eventActions';
 
 const _MyEvents = (props) => {
-  const {loadEvents,removeEvent,loggedInUser,userEvents,attendingsEvents} = props
+  const {loadAllEvents,removeEvent,loggedInUser,userEvents,attendingsEvents} = props
  
   useEffect(()=>{
     window.scrollTo(0, 0)
-    loadEvents()   
+    loadAllEvents();   
   },[])
 
   const onRemoveEvent = (eventId) => {
@@ -89,7 +89,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loadEvents,
+  loadAllEvents,
   removeEvent
 };
 

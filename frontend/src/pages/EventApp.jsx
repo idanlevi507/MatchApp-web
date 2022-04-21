@@ -10,11 +10,11 @@ import { EventPreview } from '../cmps/EventPreview'
 
 const _EventApp = (props) => {
   const query = new URLSearchParams(props.location.search);
-  const [type] = useState(query.get('type'));
+  let [type] = useState(query.get('type'));
   useEffect(() => {
     window.scrollTo(0, 0);
+    type= (!type)? '' : type;
     const newFilter = { ...props.filterBy, type };
-    console.log(type);
     props.loadEvents(newFilter);
   }, [])
 
@@ -30,15 +30,6 @@ const _EventApp = (props) => {
       props.loadEvents({ ...filterBy, [field]: value });
     };
 
-    // useEffect(()=>{
-    //   if (isMounted.current){
-    //     dispatch(setFilter(filterBy));
-    //     dispatch(loadEvents(filterBy));
-    //   } else {
-    //     isMounted.current = true;
-    //   }
-    // }, [filterBy,dispatch]);
-
     useEffect(() => {
       // componentwillunmount
       return cleanFilter;
@@ -46,15 +37,15 @@ const _EventApp = (props) => {
 
     const cleanFilter = () => {
       const emptyFilter = {
-        type: "",
-        location: "",
-        date: "",
-        time: ""
+        type: '',
+        location: '',
+        date: '',
+        time: ''
       }
       setFilter(emptyFilter);
     }
 
-    const options = [
+    const typeOptions = [
       { value: '', label: 'Show All' },
       { value: 'Football', label: 'Football' },
       { value: 'Basketball', label: 'Basketball' },
@@ -80,7 +71,7 @@ const _EventApp = (props) => {
             id="filter-type"
             onChange={handleChange}
           >
-            {options}
+            {typeOptions}
           </select>
         </div>
         <div className="type-filter-container">
@@ -117,8 +108,9 @@ const _EventApp = (props) => {
       </section>
     );
   }
+//end of filter render.
 
-
+//events list render
   return (
     <section className="events-main-container">
       <section className="list-main-containers">

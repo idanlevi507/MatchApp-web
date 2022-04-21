@@ -1,13 +1,14 @@
 import { storageService } from './asyncStorageService';
 import { httpService } from './httpService';
 
-const STORAGE_KEY = 'event';
+// const STORAGE_KEY = 'event';
 const defaultFilter = {
   type: '',
   location: '',
   date: '',
   time: '',
 };
+
 export const eventService = {
   query,
   getById,
@@ -16,25 +17,24 @@ export const eventService = {
   // getLocations,
 };
 
- function filterEvents (gEvents,filterBy)  {
-   if (!filterBy) return gEvents
-    const filteredEvents = gEvents.filter(event=>{
-      const evUpCaseType= event.type.toUpperCase();
-      const filUpCaseType= filterBy.type.toUpperCase();
-      return (evUpCaseType.includes(filUpCaseType))
-    })
-    return filteredEvents
-  }
-
-
-async function query(filterBy=null) {
+async function query(filterBy = defaultFilter) {
   // return storageService.query(STORAGE_KEY, filterBy);
   try {
     const gEvents = await httpService.get(`event/`);
-    return filterEvents(gEvents,filterBy)
+    return filterEvents(gEvents, filterBy);
   } catch (err) {
     throw err;
   }
+}
+
+function filterEvents(gEvents, filterBy) {
+  if ( filterBy.type === '') return gEvents;
+  const filteredEvents = gEvents.filter(event => {
+    const evUpCaseType = event.type.toUpperCase();
+    const filtUpCaseType = filterBy.type.toUpperCase();
+    return (evUpCaseType.includes(filtUpCaseType))
+  })
+  return filteredEvents
 }
 
 // function getLocations() {

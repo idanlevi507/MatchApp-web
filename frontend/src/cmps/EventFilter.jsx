@@ -5,7 +5,7 @@ import { loadEvents, setFilter } from "../store/actions/eventActions";
 const _EventFilter = (props) => {
   const dispatch  = useDispatch(); 
   const isMounted = useRef(false);
-  const [filterBy, setFilterBy] = useState({ type: props.type, location: "all", date: "", time: "" })
+  const [filterBy, setFilterBy] = useState({ type: props.type, location: '', date: '', time: '' })
  
   const handleChange = (ev) => {
     const field = ev.target.name;
@@ -30,10 +30,10 @@ const _EventFilter = (props) => {
   const cleanFilter = () => {
     console.log("clearfilter");
     const emptyFilter = {
-      type: "",
-      location: "",
-      date: "",
-      time: ""
+      type: '',
+      location: '',
+      date: '',
+      time: ''
     }
     setFilter(emptyFilter);
   }

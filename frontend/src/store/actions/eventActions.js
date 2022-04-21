@@ -2,16 +2,6 @@
 // import { userService } from '../../services/userService';
 import { eventService } from '../../services/eventService';
 
-export function loadEvents(filterBy = {type:''}) {
-  return async (dispatch) => {
-    try {
-      const events = await eventService.query(filterBy);
-      dispatch({ type: 'SET_EVENTS', eventData: {events, filterBy}});
-    } catch (err) {
-      console.log('EventActions: err in loadEvents', err);
-    }
-  };
-}
 
 export function loadAllEvents() {
   return async (dispatch) => {
@@ -24,6 +14,16 @@ export function loadAllEvents() {
   }
 }
 
+export function loadEvents(filterBy) {
+  return async (dispatch) => {
+    try {
+      const events = await eventService.query(filterBy);
+      dispatch({ type: 'SET_EVENTS', eventData: { events, filterBy } });
+    } catch (err) {
+      console.log('EventActions: err in loadEvents', err);
+    }
+  };
+}
 
 
 export function loadLocations() {
@@ -41,7 +41,7 @@ export function setFilter(filterData) {
   return async (dispatch) => {
     try {
       dispatch({ type: 'SET_FILTER', filterData });
-     // dispatch(loadEvents(filterData))
+      // dispatch(loadEvents(filterData))
     } catch (err) {
       console.log('EventActions: err in setFilter', err);
     }

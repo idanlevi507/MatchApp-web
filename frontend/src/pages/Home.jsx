@@ -19,7 +19,7 @@ import { EventMenu } from '../cmps/EventMenu';
 // import InputBase from '@material-ui/core/InputBase'
 class _Home extends Component {
   componentDidMount() {
-    this.props.loadEvents();
+    // this.props.loadEvents();
     this.props.loadAllEvents();
     this.props.login({password:"" , username:"IdanL"}) // in order to auto log in with user
   }
