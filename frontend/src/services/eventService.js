@@ -32,7 +32,7 @@ function filterEvents(gEvents, filterBy) {
   const filteredEvents = gEvents.filter(event => {
     const evUpCaseType = event.type.toUpperCase();
     const filtUpCaseType = filterBy.type.toUpperCase();
-    return (evUpCaseType.includes(filtUpCaseType))
+    return (evUpCaseType.includes(filtUpCaseType));
   })
   return filteredEvents
 }
