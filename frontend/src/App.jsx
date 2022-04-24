@@ -9,10 +9,14 @@ import { Footer } from './cmps/Footer';
 import { MyEvents } from './pages/MyEvents';
 import { socketService } from './services/socketService';
 import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { loadAllEvents } from './store/actions/eventActions';
 socketService.setup();
 
 const _App = (props) => {
-
+  useEffect(() => {
+    props.loadAllEvents();
+  },[]);
   return (
     <Router>
       <section className="app">
@@ -26,7 +30,7 @@ const _App = (props) => {
             <Route component={EventCreate} path="/create/:eventId?" />
             <Route component={MyEvents} path="/myevents" />
             <Route component={LoginSignup} path="/login" />
-            <Route component={Home} path="/" />
+            <Route path="/"><Home allEvents={props.allEvents}/></Route>
           </Switch>
         </main>
 
@@ -37,9 +41,14 @@ const _App = (props) => {
 }
 
 function mapStateToProps(state) {
-  return { loggedInUser: state.userModule.loggedInUser };
+  return {
+    loggedInUser: state.userModule.loggedInUser,
+    allEvents: state.eventModule.allEvents
+  };
 }
 
-export const mapDispatchToProps = {};
+export const mapDispatchToProps = {
+  loadAllEvents
+};
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App);

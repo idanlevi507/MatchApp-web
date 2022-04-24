@@ -4,18 +4,16 @@ import { EventListEdit } from '../cmps/EventListEdit';
 import { loadAllEvents, removeEvent } from '../store/actions/eventActions';
 
 const _MyEvents = (props) => {
-  const { loadAllEvents, removeEvent, loggedInUser, userEvents, attendingEvents, allEvents } = props
+  const { removeEvent, loggedInUser, userEvents, attendingEvents } = props
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (allEvents.length === 0) loadAllEvents();
   }, []);
 
   const onRemoveEvent = (eventId) => {
     removeEvent(eventId);
   };
-  
-  console.log(userEvents);
+
   if (!userEvents) return <h1>Loading...</h1>;
   return (
     <main className="user-main-container">
@@ -83,7 +81,6 @@ function mapStateToProps(state) {
   });
 
   return {
-    allEvents,
     userEvents,
     attendingEvents,
     loggedInUser: state.userModule.loggedInUser,
@@ -91,7 +88,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loadAllEvents,
   removeEvent
 };
 

@@ -14,12 +14,13 @@ export const eventService = {
   getById,
   save,
   removeEvent,
-  // getLocations,
+  filterEvents
 };
 
 async function query(filterBy = defaultFilter) {
   // return storageService.query(STORAGE_KEY, filterBy);
   try {
+    console.log('fetching');
     const gEvents = await httpService.get(`event/`);
     return filterEvents(gEvents, filterBy);
   } catch (err) {

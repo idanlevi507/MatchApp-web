@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import football from '../assets/imgs/football7.jpg';
 import volleyball from '../assets/imgs/volleyball-hero.jpg';
 import running from '../assets/imgs/runningnoa.jpg';
@@ -8,17 +5,12 @@ import explore from '../assets/imgs/explore.jpg';
 import basketball from '../assets/imgs/basketballfriends.jpg';
 import profie from '../assets/imgs/profieblack.jpg';
 import { Hero } from '../cmps/Hero';
-import { loadAllEvents } from '../store/actions/eventActions';
 import { EventListHome } from '../cmps/EventListHome';
 import React from 'react';
 import { EventMenu } from '../cmps/EventMenu';
 
-const _Home = (props) => {
-  useEffect(() => {
-    if (props.allEvents.length === 0) props.loadAllEvents();
-  }, []);
+export const Home = (props) => {
 
-  console.log('home.jsx');
   return (
     <div className="main-app-container">
 
@@ -83,13 +75,3 @@ const _Home = (props) => {
     </div>
   );
 }
-
-function mapStateToProps(state) {
-  return {
-    allEvents: state.eventModule.allEvents,
-  };
-}
-const mapDispatchToProps = {
-  loadAllEvents
-};
-export const Home = connect(mapStateToProps, mapDispatchToProps)(_Home);
