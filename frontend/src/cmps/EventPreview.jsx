@@ -1,31 +1,14 @@
-//everyone events
+//everyone events. not editable
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { IconTrash } from './icon-cmps/IconTrash';
-// import { IconEdit } from './icon-cmps/IconEdit';
-// import { FootballIcon } from './icon-cmps/footballIcon';
 import { LocationIcon } from './icon-cmps/Location';
 import { IconCalender } from './icon-cmps/IconCalender';
 import { IconStar } from './icon-cmps/IconStar';
 import { utilService } from '../services/utilService';
 
 export const EventPreview = ({event}) => {
-  // const [isEditable, setEditable] = useState(false)
-
-  // useEffect(() => {
-  //   if (props.isEditable) setEditable(true);
-  //   setTypeIcon();
-  // }, [])
-
-  // const setTypeIcon = () => {
-  //   const { type } = props.event;
-  //   if (type === 'Football') props.event.typeIcon = <FootballIcon />;
-  //   if (type === 'VolleyBall') props.event.typeIcon = '🏐';
-  //   if (type === 'Basketball') props.event.typeIcon = '🏀';
-  //   if (type === 'Running') props.event.typeIcon = '🏃🏼‍♂️';
-  // };
-  
+   
   let date = utilService.getTimeAndDate(event.eventDate);
   let dateString = (
     <h4 className="preview-date-time preview-normal-text"><IconCalender />
@@ -34,20 +17,7 @@ export const EventPreview = ({event}) => {
       {event.eventTime}
     </h4>
   );
-  // let eventActions = (
-  //   <div className="event-actions">
-  //     <button
-  //       onClick={() => {
-  //         onRemoveEvent(event._id);
-  //       }}
-  //     >
-  //       <IconTrash />
-  //     </button>
-  //     <button>
-  //       <IconEdit />
-  //     </button>
-  //   </div>
-  // );
+
   return (
     <div className="event-preview ">
       <Link to={`/event/${event._id}`} className="preview-link">
@@ -58,9 +28,6 @@ export const EventPreview = ({event}) => {
           <p className="counter-color">{`${event.members.length}/${event.capacity} JOINED`}</p>
         </div>
         <div className="preview-details">
-          {/* <div className="preview-type-rate">
-            <h5>{event.typeIcon}</h5>
-            </div> */}
           <h2>{event.title}</h2>
           {dateString}
           <h4 className="preview-normal-text"> <LocationIcon /> {event.location} </h4>
@@ -82,7 +49,6 @@ export const EventPreview = ({event}) => {
           </div>
         </div>
       </Link>
-      {/* {isEditable ? eventActions : null} */}
     </div>
   );
 }
