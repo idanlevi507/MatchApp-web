@@ -1,6 +1,6 @@
 const initialState = {
-  events: [],
   allEvents:[],
+  events: [],
   event: null,
   filterBy: {
     type: '',
