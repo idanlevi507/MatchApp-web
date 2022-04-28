@@ -18,45 +18,43 @@ function getRandomInt(min, max) {
 }
 
 function getTimeAndDate(date) {
-  const year = +date.substring(0, 4);
-  const day = date.substring(8, 10);
-  const numMonth = +date.substring(5, 7);
+  const [numMonth,day,year] = date.split('/');
   var month;
   switch (numMonth) {
-    case 1:
+    case "1":
       month = 'JUL';
       break;
-    case 2:
+    case "2":
       month = 'FEB';
       break;
-    case 3:
+    case "3":
       month = 'MAR';
       break;
-    case 4:
+    case "4":
       month = 'APR';
       break;
-    case 5:
+    case "5":
       month = 'MAY';
       break;
-    case 6:
+    case "6":
       month = 'JUN';
       break;
-    case 7:
+    case "7":
       month = 'JUL';
       break;
-    case 8:
+    case "8":
       month = 'AUG';
       break;
-    case 9:
+    case "9":
       month = 'SEP';
       break;
-    case 10:
+    case "10":
       month = 'OCT';
       break;
-    case 11:
+    case "11":
       month = 'NOV';
       break;
-    case 12:
+    case "12":
       month = 'DEC';
       break;
     default:
