@@ -1,5 +1,4 @@
 const initialState = {
-  allEvents:[],
   events: [],
   event: null,
   filterBy: {
@@ -14,9 +13,9 @@ const initialState = {
 export function eventReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_ALLEVENTS':
-      return {...state, allEvents:action.allEvents}
+      return { ...state, events: action.allEvents }
     case 'SET_EVENTS':
-      return { ...state, events: action.eventData.events,  filterBy: action.eventData.filterBy };
+      return { ...state, events: action.eventData.filteredEvents, filterBy: action.eventData.filterBy };
     case 'CLEAR_EVENT':
       return { ...state, event: null };
     case 'SET_EVENT':

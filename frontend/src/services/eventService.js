@@ -20,7 +20,7 @@ export const eventService = {
 async function query(filterBy = defaultFilter) {
   // return storageService.query(STORAGE_KEY, filterBy);
   try {
-    console.log('fetching with', filterBy);
+    // console.log('fetching with', filterBy);
     const gEvents = await httpService.get(`event/`);
     return filterEvents(gEvents, filterBy);
   } catch (err) {
@@ -29,9 +29,9 @@ async function query(filterBy = defaultFilter) {
 }
 
 function filterEvents(gEvents, filterBy) {
+  console.log('filtering',gEvents, filterBy);
   // if ( filterBy.type === '') return gEvents;
   const filteredEvents = gEvents.filter(event => {
-    // return event.type.toUpperCase().includes(filterBy.type.toUpperCase());
     const evUpCaseType = event.type.toUpperCase();
     const filtUpCaseType = filterBy.type.toUpperCase();
     return (evUpCaseType.includes(filtUpCaseType)&& event.eventDate.includes(filterBy.date)

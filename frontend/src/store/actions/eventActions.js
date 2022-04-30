@@ -17,14 +17,25 @@ export function loadAllEvents() {
 export function loadEvents(filterBy) {
   return async (dispatch) => {
     try {
-      const events = await eventService.query(filterBy);
-      dispatch({ type: 'SET_EVENTS', eventData: { events, filterBy } });
+      const filteredEvents = await eventService.query(filterBy);
+      dispatch({ type: 'SET_EVENTS', eventData: { filteredEvents, filterBy } });
     } catch (err) {
       console.log('EventActions: err in loadEvents', err);
     }
   };
 }
 
+export function filterEvents(filterBy) {
+  return async (dispatch,storeState) => {
+    try {
+      const {eventModule}= storeState();
+      const filteredEvents = await eventService.filterEvents(eventModule.events,filterBy);
+      dispatch({ type: 'SET_EVENTS', eventData: { filteredEvents, filterBy } });
+    } catch (err) {
+      console.log('EventActions: err in loadEvents', err);
+    }
+  };
+}
 
 export function loadLocations() {
   return async (dispatch) => {
@@ -36,6 +47,7 @@ export function loadLocations() {
     }
   };
 }
+
 
 export function setFilter(filterData) {
   return async (dispatch) => {

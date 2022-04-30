@@ -24,7 +24,7 @@ export const Home = (props) => {
         </h1>
         <section className="event-list-container">
           <EventListHome
-            events={props.allEvents}
+            events={props.events}
           />
         </section>
       </div>
