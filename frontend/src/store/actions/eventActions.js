@@ -29,7 +29,7 @@ export function filterEvents(filterBy) {
   return async (dispatch,storeState) => {
     try {
       const {eventModule}= storeState();
-      const filteredEvents = await eventService.filterEvents(eventModule.events,filterBy);
+      const filteredEvents = await eventService.filterEvents(eventModule.allEvents,filterBy);
       dispatch({ type: 'SET_EVENTS', eventData: { filteredEvents, filterBy } });
     } catch (err) {
       console.log('EventActions: err in loadEvents', err);

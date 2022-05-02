@@ -72,10 +72,10 @@ const _MyEvents = (props) => {
 }
 
 function mapStateToProps(state) {
-  const events = state.eventModule.events;
+  const allEvents = state.eventModule.allEvents;
   const userId = state.userModule.loggedInUser._id;
-  const userEvents = events.filter((event) => event.createdBy._id === userId);
-  const attendingEvents = events.filter((event) => {
+  const userEvents = allEvents.filter((event) => event.createdBy._id === userId);
+  const attendingEvents = allEvents.filter((event) => {
     if (event.createdBy._id === userId) return false; // its my event;
     return event.members.find((member) => member._id === userId);
   });

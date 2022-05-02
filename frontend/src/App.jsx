@@ -30,11 +30,11 @@ const _App = (props) => {
         <main className="main-page">
           <Switch>
             <Route component={EventDetails} path="/event/:eventId" />
-            <Route path="/event"><EventApp events={props.events}/></Route>
+            <Route path="/event"><EventApp allEvents={props.allEvents}/></Route>
             <Route component={EventCreate} path="/create/:eventId?" />
             <Route component={MyEvents} path="/myevents" />
             <Route component={LoginSignup} path="/login" />
-            <Route path="/"><Home events={props.events}/></Route>
+            <Route path="/"><Home allEvents={props.allEvents}/></Route>
           </Switch>
         </main>
 
@@ -47,7 +47,7 @@ const _App = (props) => {
 function mapStateToProps(state) {
   return {
     loggedInUser: state.userModule.loggedInUser,
-    events: state.eventModule.events
+    allEvents: state.eventModule.allEvents
   };
 }
 
