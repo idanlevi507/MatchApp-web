@@ -10,16 +10,22 @@ import { MyEvents } from './pages/MyEvents';
 import { socketService } from './services/socketService';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
-import { loadAllEvents } from './store/actions/eventActions';
-import {login} from './store/actions/userActions.js';
+import { loadAllEvents, filterEvents } from './store/actions/eventActions';
+import { login } from './store/actions/userActions.js';
 socketService.setup();
 
 const _App = (props) => {
+
   useEffect(() => {
     // console.log('1app useeffect');
     props.loadAllEvents();
-    props.login({password:"" , username:"IdanL"}) // in order to auto log in with user
-  },[]);
+    props.login({ password: "", username: "IdanL" }) // in order to auto log in with user
+  }, []);
+
+  useEffect(() => {
+    props.filterEvents(props.filterBy);
+  }, [props.filterBy]);
+
   // console.log('1app allEvents', props.allEvents);
   return (
     <Router>
@@ -30,11 +36,11 @@ const _App = (props) => {
         <main className="main-page">
           <Switch>
             <Route component={EventDetails} path="/event/:eventId" />
-            <Route path="/event"><EventApp allEvents={props.allEvents}/></Route>
+            <Route component={EventApp} path="/event"></Route>
             <Route component={EventCreate} path="/create/:eventId?" />
             <Route component={MyEvents} path="/myevents" />
             <Route component={LoginSignup} path="/login" />
-            <Route path="/"><Home allEvents={props.allEvents}/></Route>
+            <Route path="/"><Home allEvents={props.allEvents} /></Route>
           </Switch>
         </main>
 
@@ -47,12 +53,15 @@ const _App = (props) => {
 function mapStateToProps(state) {
   return {
     loggedInUser: state.userModule.loggedInUser,
-    allEvents: state.eventModule.allEvents
+    allEvents: state.eventModule.allEvents,
+    filterBy: state.eventModule.filterBy,
+
   };
 }
 
 export const mapDispatchToProps = {
   loadAllEvents,
+  filterEvents,
   login
 };
 

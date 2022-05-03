@@ -1,5 +1,5 @@
 const initialState = {
-  allEvents:[],
+  allEvents: [],
   events: [],
   event: null,
   filterBy: {
@@ -14,9 +14,9 @@ const initialState = {
 export function eventReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_ALLEVENTS':
-      return {...state, allEvents:action.allEvents}
+      return { ...state, allEvents: action.allEvents }
     case 'SET_EVENTS':
-      return { ...state, events: action.eventData.filteredEvents,  filterBy: action.eventData.filterBy };
+      return { ...state, events: action.eventData.filteredEvents };
     case 'CLEAR_EVENT':
       return { ...state, event: null };
     case 'SET_EVENT':
@@ -31,7 +31,7 @@ export function eventReducer(state = initialState, action = {}) {
         events: state.events.filter((event) => event._id !== action.eventId),
       };
     case 'SET_FILTER':
-      return { ...state, filterBy: action.filterData };
+      return { ...state, filterBy: action.eventData.filterData };
     case 'SET_LOCATIONS':
       return { ...state, locations: action.locations };
     case 'UPDATE_REVIEW':

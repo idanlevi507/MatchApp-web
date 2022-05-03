@@ -6,8 +6,10 @@ import { eventService } from '../../services/eventService';
 export function loadAllEvents() {
   return async (dispatch) => {
     try {
+      const filterBy = { type: '', location: '', date: '', time: '' }
       const allEvents = await eventService.query();
       dispatch({ type: 'SET_ALLEVENTS', allEvents });
+      dispatch({ type: 'SET_EVENTS', eventData: { filteredEvents: allEvents, filterBy } });
     } catch (err) {
       console.log('EventActions: err in loadAllEvents', err);
     }
@@ -25,11 +27,21 @@ export function loadEvents(filterBy) {
   };
 }
 
-export function filterEvents(filterBy) {
-  return async (dispatch,storeState) => {
+export function updateFilter(filterBy) {
+  return async (dispatch) => {
     try {
-      const {eventModule}= storeState();
-      const filteredEvents = await eventService.filterEvents(eventModule.allEvents,filterBy);
+      dispatch({ type: 'SET_FILTER', eventData: { filterData: filterBy } });
+    } catch (err) {
+      console.log('EventActions: err in update filterBy', err);
+    }
+  };
+}
+
+export function filterEvents(filterBy) {
+  return async (dispatch, storeState) => {
+    try {
+      const { eventModule } = storeState();
+      const filteredEvents = await eventService.filterEvents(eventModule.allEvents, filterBy);
       dispatch({ type: 'SET_EVENTS', eventData: { filteredEvents, filterBy } });
     } catch (err) {
       console.log('EventActions: err in loadEvents', err);
