@@ -1,6 +1,5 @@
 import React from 'react';
 import { IconTrash } from '../cmps/icon-cmps/IconTrash';
-import messi from '../assets/imgs/messiprofile.jpg';
 
 export function EventPostPreview({ post, onRemovePost }) {
   return (
@@ -13,9 +12,8 @@ export function EventPostPreview({ post, onRemovePost }) {
       </div>
       <div className="deletes-post-container">
         <button
-          className="delete-post-btn svg"
+          className="delete-post-btn delete-post svg"
           onClick={() => onRemovePost(post.id)}
-          className="delete-post"
         >
           <IconTrash />
         </button>

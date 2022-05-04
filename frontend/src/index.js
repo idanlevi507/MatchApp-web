@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/main.scss';
 import { App } from './App.jsx';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/store.js';

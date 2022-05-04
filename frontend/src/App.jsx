@@ -15,16 +15,16 @@ import { login } from './store/actions/userActions.js';
 socketService.setup();
 
 const _App = (props) => {
-
+const {loadAllEvents,login,filterEvents,filterBy} = props
   useEffect(() => {
     // console.log('1app useeffect');
-    props.loadAllEvents();
-    props.login({ password: "", username: "IdanL" }) // in order to auto log in with user
+    loadAllEvents();
+    login({ password: "", username: "IdanL" }) // in order to auto log in with user
   }, []);
 
   useEffect(() => {
-    props.filterEvents(props.filterBy);
-  }, [props.filterBy]);
+    filterEvents(filterBy);
+  }, [filterBy]);
 
   // console.log('1app allEvents', props.allEvents);
   return (
@@ -54,8 +54,7 @@ function mapStateToProps(state) {
   return {
     loggedInUser: state.userModule.loggedInUser,
     allEvents: state.eventModule.allEvents,
-    filterBy: state.eventModule.filterBy,
-
+    filterBy: state.eventModule.filterBy
   };
 }
 

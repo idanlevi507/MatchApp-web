@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Carousel from 'react-material-ui-carousel';
-import { Paper, Button, Input, TextField, Select } from '@material-ui/core';
+import { TextField, Select } from '@material-ui/core';
 
 import {
   loadUsers,

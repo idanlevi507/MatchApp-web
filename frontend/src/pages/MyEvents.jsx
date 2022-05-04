@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import { EventListEdit } from '../cmps/EventListEdit';
-import { loadAllEvents, removeEvent } from '../store/actions/eventActions';
+import { removeEvent } from '../store/actions/eventActions';
 
 const _MyEvents = (props) => {
   const { removeEvent, loggedInUser, userEvents, attendingEvents } = props

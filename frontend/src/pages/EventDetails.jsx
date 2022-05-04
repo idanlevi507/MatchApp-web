@@ -1,8 +1,8 @@
-import nemo from '../assets/imgs/nemoDemo.jpg';
+// import nemo from '../assets/imgs/nemoDemo.jpg';
 import React from 'react';
 import { connect } from 'react-redux';
 import { BallLoader } from '../cmps/icon-cmps/ballLoader';
-import { IconBack } from '../cmps/icon-cmps/IconBack';
+// import { IconBack } from '../cmps/icon-cmps/IconBack';
 import {
   getEventById,
   clearEvent,
@@ -97,7 +97,7 @@ class _EventDetails extends React.Component {
   };
 
   render() {
-    const { event, actionMessage, showMsg, isMember } = this.state;
+    const { event, actionMessage, showMsg } = this.state;
     const { loggedInUser, updateEvent } = this.props;
     let message = (
       <Snackbar

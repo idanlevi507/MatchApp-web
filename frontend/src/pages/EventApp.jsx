@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { loadEvents, setFilter, updateFilter } from '../store/actions/eventActions';
 import { EventPreview } from '../cmps/EventPreview'
 import DatePicker from "react-datepicker";
@@ -12,7 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const _EventApp = (props) => {
   const [startDate, setStartDate] = useState(null);
-  const filterBy = props.filterBy;
+  const {filterBy,updateFilter} = props;
 
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -21,8 +21,9 @@ const _EventApp = (props) => {
   // const isMounted = useRef(false);
 
   useEffect(() => {
+    console.log('didmount');
     window.scrollTo(0, 0);
-    props.updateFilter({ ...filterBy, type });
+    updateFilter({ ...filterBy, type });
     // willunmounte ->
     // return cleanFilter;
   }, []);
@@ -30,7 +31,7 @@ const _EventApp = (props) => {
   const handleChange = (ev) => {
     const field = ev.target.name;
     const value = ev.target.value;
-    props.updateFilter({ ...filterBy, [field]: value });
+    updateFilter({ ...filterBy, [field]: value });
   };
 
   const handleChangeDate = (date) => {
@@ -93,7 +94,8 @@ const _EventApp = (props) => {
           <DatePicker
             className='filter-button'
             selected={startDate}
-            onChange={(date) => { handleChangeDate(date) }}
+            locale="en-GB"
+            onChange={(date) => {console.log(date); handleChangeDate(date) }}
             isClearable
             placeholderText="Click to select a date"
           />
