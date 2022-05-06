@@ -7,22 +7,22 @@ import { Link } from 'react-router-dom';
 
 export const EventPreviewMyProfile = (props) => {
   const [isEditable, setEditable] = useState(false);
+  const { event, onRemoveEvent } = props;
 
   useEffect(() => {
     if (props.isEditable) setEditable(true);
-    setTypeIcon();
+    // setTypeIcon();
   }, []);
 
-  const setTypeIcon = () => {
-    const { type } = props.event;
-    if (type === 'Football') props.event.typeIcon = '⚽';
-    if (type === 'VolleyBall') props.event.typeIcon = '🏐';
-    if (type === 'Basketball') props.event.typeIcon = '🏀';
-    if (type === 'Running') props.event.typeIcon = '🏃🏼‍♂️';
-  };
+  // const setTypeIcon = () => {
+  //   const { type } = props.event;
+  //   if (type === 'Football') props.event.typeIcon = '⚽';
+  //   if (type === 'VolleyBall') props.event.typeIcon = '🏐';
+  //   if (type === 'Basketball') props.event.typeIcon = '🏀';
+  //   if (type === 'Running') props.event.typeIcon = '🏃🏼‍♂️';
+  // };
 
 
-  const { event, onRemoveEvent } = props;
   let eventActions = (
     <div className="event-actions-profile">
       <button
@@ -41,6 +41,7 @@ export const EventPreviewMyProfile = (props) => {
       </Link>
     </div>
   );
+
   return (
     <div className="event-preview-profile">
       <Link to={`/event/${event._id}`} className="preview-link-profile">

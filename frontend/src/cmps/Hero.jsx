@@ -17,16 +17,16 @@ import SwiperCore, {
 SwiperCore.use([Autoplay, Pagination, Navigation, EffectFade]);
 // Import Swiper styles
 
-export class Hero extends React.Component {
-  render() {
-    return (
-      <section className="carousel-container">
-        <>
-          <div className="search-home">
-            <h1 className="slogan">
-              A World of Sports Events<span className="blue-point">.</span>
-            </h1>
-            {/* <div className="search-container">
+export const Hero = () => {
+
+  return (
+    <section className="carousel-container">
+      <>
+        <div className="search-home">
+          <h1 className="slogan">
+            A World of Sports Events<span className="blue-point">.</span>
+          </h1>
+          {/* <div className="search-container">
               <input
                 type="search"
                 name=""
@@ -35,52 +35,51 @@ export class Hero extends React.Component {
                 placeholder="Search Events"
               />
             </div> */}
-          </div>
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={0}
-            speed={2500}
-            loop={true}
-            autoplay={{
-              delay: 2500,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            className="heros-container"
-          >
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={night} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={finishRunning} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={basketball} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={finishfootball} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={footwalk} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={volley} alt="" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="overlay"></div>
-              <img className="img-hero" src={finishVolley} alt="" />
-            </SwiperSlide>
-          </Swiper>
-        </>
-      </section>
-    );
-  }
+        </div>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={0}
+          speed={2500}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          className="heros-container"
+        >
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={night} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={finishRunning} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={basketball} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={finishfootball} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={footwalk} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={volley} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="overlay"></div>
+            <img className="img-hero" src={finishVolley} alt="" />
+          </SwiperSlide>
+        </Swiper>
+      </>
+    </section>
+  );
 }
