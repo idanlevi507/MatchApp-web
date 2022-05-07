@@ -1,65 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SocialShare } from '../cmps/SocialShare'
 import { ParticipantList } from './ParticipantList';
 import { socketService } from '../services/socketService';
 
-export class EventJoin extends React.Component {
-  state = {
-    isMember: false,
-  };
-  componentDidMount() {
-    this.setState({ isMember: this.checkIsMember() });
-  }
+export const EventJoin = (props) => {
+  const [isMember, setIsMember] = useState(null)
+  const { event, loggedInUser, updateEvent, loadEvent } = props;
+  
+  useEffect(() =>{
+    setIsMember(checkIsMember());
+  }, []);
 
-  checkIsMember = () => {
-    if (!this.props.loggedInUser) return;
-    // console.log(this.props.event);
-    return this.props.event.members.some((member) => {
-      return member._id === this.props.loggedInUser._id;
+  const checkIsMember = () => {
+    if (!loggedInUser) return;
+    return event.members.some((member) => {
+      return member._id === loggedInUser._id;
     });
   };
 
-  joinModalMove = () => {
-    this.setState({ showModal: true });
-    setTimeout(() => {
-      this.setState({ showModal: false });
-    }, 5000);
-  };
+  // joinModalMove = () => {
+  //   setState({ showModal: true });
+  //   setTimeout(() => {
+  //     setState({ showModal: false });
+  //   }, 5000);
+  // };
 
-  joinEvent = async () => {
-    const updatedEvent = { ...this.props.event };
-    const { _id, fullname, imgUrl } = this.props.loggedInUser;
+  const joinEvent = async () => {
+    const updatedEvent = { ...event };
+    const { _id, fullname, imgUrl } = loggedInUser;
     const newMember = {
       _id,
       fullname,
       imgUrl,
-      isMember: !this.state.isMember,
+      isMember: !isMember,
     };
-    if (!this.state.isMember) {
+    if (!isMember) {
       updatedEvent.members.push(newMember);
     } else {
-      const memberIdx = this.props.event.members.findIndex(
+      const memberIdx = event.members.findIndex(
         (member) => member._id === _id
       );
       updatedEvent.members.splice(memberIdx, 1);
     }
 
-    await this.props.updateEvent(updatedEvent);
+    await updateEvent(updatedEvent);
     await socketService.emit('event memberUpdated', newMember);
-    await this.props.loadEvent();
-    this.setState({ isMember: !this.state.isMember });
+    await loadEvent();
+    setIsMember(!isMember);
   };
 
-  render() {
-    const { isMember } = this.state;
-    const { event } = this.props;
-    // console.log(isMember);
-    return (
-      <div className="call-to-action-container">
-        {/* <div className="messages-container">
+  // console.log(isMember);
+  return (
+    <div className="call-to-action-container">
+      {/* <div className="messages-container">
           <h1
             className={
-              this.state.showModal && !this.state.isMember
+              state.showModal && !state.isMember
                 ? 'event-join'
                 : 'event-join-hidden'
             }
@@ -69,7 +65,7 @@ export class EventJoin extends React.Component {
           </h1>
           <h1
             className={
-              this.state.showModal && this.state.isMember
+              state.showModal && state.isMember
                 ? 'event-leave'
                 : 'event-leave-hidden'
             }
@@ -78,35 +74,34 @@ export class EventJoin extends React.Component {
             Let Play!😀
           </h1>
         </div> */}
-        <div className="call-to-action">
-          {/* <h2>Who's Coming?</h2> */}
-          <h2 className="event-capcity">
-            {`${event.members.length}/${event.capacity}`}{' '}
-            <span className="had-joined">Had Joined!</span>{' '}
-          </h2>
+      <div className="call-to-action">
+        {/* <h2>Who's Coming?</h2> */}
+        <h2 className="event-capcity">
+          {`${event.members.length}/${event.capacity}`}{' '}
+          <span className="had-joined">Had Joined!</span>{' '}
+        </h2>
+        <div>
           <div>
-            <div>
-              <ParticipantList members={event.members} />
-            </div>
-          </div>
-          <div className="button-event-container">
-            <SocialShare event={event}></SocialShare>
-            <button
-              className="button-event"
-              onClick={(ev) => {
-                ev.preventDefault();
-                this.joinEvent();
-                this.joinModalMove();
-              }}
-            >
-              {isMember ? 'Leave Event' : 'Join Event'}
-            </button>
+            <ParticipantList members={event.members} />
           </div>
         </div>
+        <div className="button-event-container">
+          <SocialShare event={event}></SocialShare>
+          <button
+            className="button-event"
+            onClick={(ev) => {
+              ev.preventDefault();
+              joinEvent();
+              // joinModalMove();
+            }}
+          >
+            {isMember ? 'Leave Event' : 'Join Event'}
+          </button>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 // function mapStateToProps(state) {
 //   return {

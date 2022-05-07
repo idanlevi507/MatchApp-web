@@ -12,7 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const _EventApp = (props) => {
   const [startDate, setStartDate] = useState(null);
-  const {filterBy,updateFilter} = props;
+  const { filterBy, updateFilter } = props;
 
   const { search } = useLocation();
   const query = new URLSearchParams(search);
@@ -95,9 +95,9 @@ const _EventApp = (props) => {
             className='filter-button'
             selected={startDate}
             locale="en-GB"
-            onChange={(date) => {console.log(date); handleChangeDate(date) }}
+            onChange={(date) => { console.log(date); handleChangeDate(date) }}
             isClearable
-            placeholderText="Click to select a date"
+            placeholderText="Click to select date"
           />
         </div>
       </section>
