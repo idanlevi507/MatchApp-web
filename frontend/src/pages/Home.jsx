@@ -8,9 +8,10 @@ import { Hero } from '../cmps/Hero';
 import { EventListHome } from '../cmps/EventListHome';
 import React from 'react';
 import { EventMenu } from '../cmps/EventMenu';
+import { useHistory } from 'react-router-dom';
 
 export const Home = (props) => {
-
+  const history = useHistory();
   return (
     <div className="main-app-container">
 
@@ -30,42 +31,42 @@ export const Home = (props) => {
       </div>
       <section className="categories-gallery ">
         <div className="gallery-item football-gallery"
-          onClick={() => props.history.push('/event?type=Football')} >
+          onClick={() => history.push('/event?type=Football')} >
           <h2>Football</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
           <img src={football} alt="bemo" />
         </div>
         <div className="gallery-item basketball-gallery"
-          onClick={() => props.history.push('/event?type=Basketball')}>
+          onClick={() => history.push('/event?type=Basketball')}>
           <h2>Basketball</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
           <img src={basketball} alt="" />
         </div>
         <div className="gallery-item volleyball-gallery"
-          onClick={() => props.history.push('/event?type=Volleyball')}>
+          onClick={() => history.push('/event?type=Volleyball')}>
           <h2 className="gallery-h2">Volleyball</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
           <img src={volleyball} alt="bemo" />
         </div>
         <div className="gallery-item running-gallery"
-          onClick={() => props.history.push('/event?type=Running')}>
+          onClick={() => history.push('/event?type=Running')}>
           <h2>Running</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
           <img src={running} alt="" />
         </div>
         <div className="gallery-item profile-gallery"
-          onClick={() => props.history.push('/myevents')}>
+          onClick={() => history.push('/myevents')}>
           <h2>My Profile</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
           <img src={profie} alt="" />
         </div>
         <div className="gallery-item explore-gallery"
-          onClick={() => props.history.push('/event')}>
+          onClick={() => history.push('/event')}>
           <h2>Explore</h2>
           <h3 className="see-more">See more!</h3>
           <div className="overlay"></div>
